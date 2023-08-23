@@ -5,6 +5,7 @@ plugins {
 }
 
 group = "com.jk"
+/*version = "0.1"*/
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_11
