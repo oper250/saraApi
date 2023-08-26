@@ -30,7 +30,7 @@ public class ImageUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	public String uplaodBucketRepImage( MultipartFile file ) throws Exception {
+	public String uplaodBucketRepImage(MultipartFile file) throws Exception {
 		if( file.getSize() > imgMaxSize ) {
 			throw new CommonException( "1001", "업로드 파일의 용량이 초과되었습니다. [Max 10Mb]" );
 		}
@@ -46,10 +46,13 @@ public class ImageUtil {
 			throw new CommonException( "1002", "[" + uploadFileFormat + "] 형식의 파일은 업로드 할 수 없습니다." );
 		}
 
+		System.out.println("!!!!!!!!!!!!!" + uploadFileName);
+
 		String monthSuffix = CommonUtil.SEPARATOR + CommonUtil.getServerTime( "%Y%m" );
 		String saveDir = this.bucketUploadBasePath + this.BUCKET_REP_SUFFIX + monthSuffix;
+		System.out.println("@@@@@" + saveDir);
 		String saveFileName = CommonUtil.SEPARATOR + CommonUtil.getRandomString( -1, 8 ) + CommonUtil.getServerTime( "%Y%m%d" ) + CommonUtil.getRandomString( -1, 8 ) + "." + uploadFileFormat;
-
+		System.out.println("@@@@@@@@@@@@@@" + saveFileName);
 		CommonUtil.makeDirs( saveDir );
 
 		file.transferTo( new File( saveDir + saveFileName ) );

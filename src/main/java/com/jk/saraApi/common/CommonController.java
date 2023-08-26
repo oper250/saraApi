@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings( "unchecked" )
@@ -38,6 +39,14 @@ public class CommonController {
 
 	/*  */
 	public Map<String, Object> getResponse(Map<String, Object> rsMap) throws Exception {
+		rsMap.put("rsCode", "0000");
+		rsMap.put("rsMsg", "SUCCESS");
+
+		return rsMap;
+	}
+
+	public Map<String, Object> getResponse() throws Exception {
+		HashMap<String, Object> rsMap = new HashMap<String, Object>();
 		rsMap.put("rsCode", "0000");
 		rsMap.put("rsMsg", "SUCCESS");
 

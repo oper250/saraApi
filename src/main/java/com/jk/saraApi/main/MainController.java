@@ -1,15 +1,12 @@
 package com.jk.saraApi.main;
 
 import com.jk.saraApi.common.CommonController;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.net.InetAddress;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,6 +50,18 @@ public class MainController extends CommonController {
         rsMap.put("rsList", rsMap.get("rsList"));
         rsMap.put("moreYn", rsMap.get("moreYn"));
         rsMap.put("nextStNo", rsMap.get("nextStNo"));
+
+        return super.getResponse(rsMap);
+    }
+
+    @ResponseBody
+    @PostMapping( value = "/regBucket" )
+    public Map<String, Object> regBucket(HttpServletRequest request, @RequestParam( required=false, value="file" ) MultipartFile file, @RequestParam Map<String, Object> paramMap) throws Exception {
+        Map<String, Object> rsMap = new HashMap<String, Object>();
+
+        long bucketSeqNo = mainService.regBucket(paramMap, file);
+
+        rsMap.put("bucketSeqNo", bucketSeqNo);
 
         return super.getResponse(rsMap);
     }

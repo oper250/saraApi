@@ -7,7 +7,9 @@ import com.jk.saraApi.common.Encryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,8 +48,6 @@ public class MainService extends CommonService {
 		String[] reqKeys = {"stNo"};		// 필수키
 		super.checkVal(paramMap, reqKeys);
 
-		System.out.println("!!!!!!!!" + paramMap.get("stNo"));
-
 		Map<String, Object> rsMap = new HashMap<String, Object>();
 		String moreYn = "";		// 더보기여부
 		int nextStNo = 0;
@@ -67,6 +67,21 @@ public class MainService extends CommonService {
 		rsMap.put( "nextStNo", nextStNo );
 
 		return rsMap;
+	}
+
+	/* 버킷 등록 */
+	public long regBucket(Map<String, Object> paramMap, MultipartFile file) throws Exception {
+		String[] reqKeys = {"bucketNm"};		// 필수키
+		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
+
+		// 파일업로드 및 업로드경로 SET
+		if ( file != null && !file.isEmpty() ){
+			paramMap.put("repImgUrl", imageUtil.uplaodBucketRepImage(file));
+		}
+
+		mainDAO.insertBucket(paramMap);	// 버킷 등록
+
+		return ((BigInteger)paramMap.get("bucketSeqNo")).longValue();
 	}
 
 }

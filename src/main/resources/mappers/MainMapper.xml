@@ -67,20 +67,21 @@
 
 	<insert id="insertBucket" parameterType="JSONObject" useGeneratedKeys="true" keyProperty="bucketSeqno">
 		INSERT INTO TB_BUCKET_MNG
-		            (BUCKET_SEQ,
-		             USER_SEQ,
-		             BUCKET_NM,
-		             BUCKET_DSCR,
-		             REP_IMG_URL,
-		             REG_DTTM,
-		             DEL_YN)
-		VALUES     (NEXTVAL(TB_BUCKET_MNG_SEQUENCE),
-		            #{userSeq},
-		            #{bucketNm},
-		            #{bucketDscr},
-		            #{repImgUrl},
-		            now(),
-		            'N')
+				(BUCKET_SEQ,
+				 USER_SEQ,
+				 BUCKET_NM,
+				 BUCKET_DSCR,
+				 REP_IMG_URL,
+				 REG_DTTM,
+				 DEL_YN)
+		VALUES
+		       (NEXTVAL(TB_BUCKET_MNG_SEQUENCE),
+				'1',
+				#{bucketNm},
+				'',
+				#{repImgUrl},
+				now(),
+				'N')
 	</insert>
 
 	<insert id="insertStory" parameterType="JSONObject" useGeneratedKeys="true" keyProperty="bucketStorySeqno">
