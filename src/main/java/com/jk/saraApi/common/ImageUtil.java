@@ -97,4 +97,10 @@ public class ImageUtil {
 
 		return this.bucketBaseUrl + this.BUCKET_STORY_SUFFIX + monthSuffix + saveFileName;
 	}
+
+	public static void main(String[] args) {
+		System.out.println("~~~~~~");
+		File f = new File("/ccc/ddd/eee/suc.txt");
+		f.mkdirs();
+	}
 }

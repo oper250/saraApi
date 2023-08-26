@@ -79,9 +79,10 @@ public class MainService extends CommonService {
 			paramMap.put("repImgUrl", imageUtil.uplaodBucketRepImage(file));
 		}
 
-		mainDAO.insertBucket(paramMap);	// 버킷 등록
+		//mainDAO.insertBucket(paramMap);	// 버킷 등록
+		return 4L;
 
-		return ((BigInteger)paramMap.get("bucketSeqNo")).longValue();
+		//return ((BigInteger)paramMap.get("bucketSeqNo")).longValue();
 	}
 
 }
