@@ -54,6 +54,10 @@ public class ImageUtil {
 		String saveFileName = CommonUtil.SEPARATOR + CommonUtil.getRandomString( -1, 8 ) + CommonUtil.getServerTime( "%Y%m%d" ) + CommonUtil.getRandomString( -1, 8 ) + "." + uploadFileFormat;
 		System.out.println("@@@@@@@@@@@@@@" + saveFileName);
 		CommonUtil.makeDirs( saveDir );
+		System.out.println("^^^^^^^^^^^;;" + "통과");
+		CommonUtil.makeDirs( "/aaa" );
+		System.out.println("^^^^^^^^^^^;;" + "통과2");
+
 
 		file.transferTo( new File( saveDir + saveFileName ) );
 
