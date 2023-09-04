@@ -75,7 +75,7 @@
 				 REG_DTTM,
 				 DEL_YN)
 		VALUES
-		       (NEXTVAL(TB_BUCKET_MNG_SEQUENCE),
+		       (NEXTVAL(SEQ_BUCKET_MNG),
 				'1',
 				#{bucketNm},
 				'',
