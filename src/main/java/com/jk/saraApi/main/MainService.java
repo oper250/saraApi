@@ -77,9 +77,11 @@ public class MainService extends CommonService {
 		// 파일업로드 및 업로드경로 SET
 		if ( file != null && !file.isEmpty() ){
 			paramMap.put("repImgUrl", imageUtil.uplaodBucketRepImage(file));
+			log.info(":::파일 업로드 완료:::");
 		}
 
 		mainDAO.insertBucket(paramMap);	// 버킷 등록
+		log.info(":::버킷 등록 완료:::");
 
 		return (String)paramMap.get("bucketSeqNo");
 	}
