@@ -59,11 +59,11 @@ public class ImageUtil {
 		System.out.println("^^^^^^^^^^^;;" + "통과1");
 		CommonUtil.makeDirs( saveDir );
 		System.out.println("^^^^^^^^^^^;;" + "통과2");
-
+		System.out.println("!!!!!경로::" + this.bucketBaseUrl + saveDir + saveFileName);
 /*
 		file.transferTo( new File( saveDir + saveFileName ) );*/
 
-		return this.bucketBaseUrl + this.BUCKET_REP_SUFFIX + monthSuffix + saveFileName;
+		return this.bucketBaseUrl + saveDir + saveFileName;
 	}
 
 	/**
