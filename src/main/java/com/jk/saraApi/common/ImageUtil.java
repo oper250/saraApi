@@ -54,7 +54,7 @@ public class ImageUtil {
 
 		file.transferTo( new File( saveDir + saveFileName ) );
 
-		return this.bucketBaseUrl + saveDir + saveFileName;
+		return this.bucketBaseUrl + this.BUCKET_REP_SUFFIX + monthSuffix + saveFileName;
 	}
 
 	/**
