@@ -59,7 +59,7 @@ public class MainController extends CommonController {
     public Map<String, Object> regBucket(HttpServletRequest request, @RequestParam( required=false, value="file" ) MultipartFile file, @RequestParam Map<String, Object> paramMap) throws Exception {
         Map<String, Object> rsMap = new HashMap<String, Object>();
 
-        long bucketSeqNo = mainService.regBucket(paramMap, file);
+        String bucketSeqNo = mainService.regBucket(paramMap, file);
 
         rsMap.put("bucketSeqNo", bucketSeqNo);
 

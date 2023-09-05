@@ -20,7 +20,7 @@ public class MainDAO extends CommonDAO {
 	}
 
 	/* 버킷 등록 */
-	public long insertBucket(Map<String, Object> paramMap) throws Exception {
+	public int insertBucket(Map<String, Object> paramMap) throws Exception {
 		return sqlSession.insert( "MainMapper.insertBucket", paramMap);
 	}
 

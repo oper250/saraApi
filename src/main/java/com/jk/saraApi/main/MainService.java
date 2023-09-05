@@ -71,7 +71,7 @@ public class MainService extends CommonService {
 
 	/* 버킷 등록 */
 	public String regBucket(Map<String, Object> paramMap, MultipartFile file) throws Exception {
-		String[] reqKeys = {"bucketNm"};		// 필수키
+		String[] reqKeys = {"bucketNm"};					// 필수키
 		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
 
 		// 파일업로드 및 업로드경로 SET
