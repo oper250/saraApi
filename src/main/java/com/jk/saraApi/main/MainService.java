@@ -70,7 +70,7 @@ public class MainService extends CommonService {
 	}
 
 	/* 버킷 등록 */
-	public long regBucket(Map<String, Object> paramMap, MultipartFile file) throws Exception {
+	public String regBucket(Map<String, Object> paramMap, MultipartFile file) throws Exception {
 		String[] reqKeys = {"bucketNm"};		// 필수키
 		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
 
@@ -79,10 +79,9 @@ public class MainService extends CommonService {
 			paramMap.put("repImgUrl", imageUtil.uplaodBucketRepImage(file));
 		}
 
-		//mainDAO.insertBucket(paramMap);	// 버킷 등록
-		return 4L;
+		mainDAO.insertBucket(paramMap);	// 버킷 등록
 
-		//return ((BigInteger)paramMap.get("bucketSeqNo")).longValue();
+		return (String)paramMap.get("bucketSeqNo");
 	}
 
 	public static void main(String[] args) throws Exception{
