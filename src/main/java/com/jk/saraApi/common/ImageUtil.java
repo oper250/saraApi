@@ -46,24 +46,15 @@ public class ImageUtil {
 			throw new CommonException( "1002", "[" + uploadFileFormat + "] 형식의 파일은 업로드 할 수 없습니다." );
 		}
 
-		System.out.println("!!!!!!!!!!!!!" + uploadFileName);
-
 		String monthSuffix = CommonUtil.SEPARATOR + CommonUtil.getServerTime( "%Y%m" );
 		String saveDir = this.bucketUploadBasePath + this.BUCKET_REP_SUFFIX + monthSuffix;
-		System.out.println("@@@@@" + saveDir);
 		String saveFileName = CommonUtil.SEPARATOR + CommonUtil.getRandomString( -1, 8 ) + CommonUtil.getServerTime( "%Y%m%d" ) + CommonUtil.getRandomString( -1, 8 ) + "." + uploadFileFormat;
-		System.out.println("@@@@@@@@@@@@@@" + saveFileName);
-		File aa = new File("/test");
-		aa.mkdir();
-		CommonUtil.makeDirs( "/aaa" );
-		System.out.println("^^^^^^^^^^^;;" + "통과1");
-		CommonUtil.makeDirs( saveDir );
-		System.out.println("^^^^^^^^^^^;;" + "통과2");
-		System.out.println("!!!!!경로::" + this.bucketBaseUrl + saveFileName);
-/*
-		file.transferTo( new File( saveDir + saveFileName ) );*/
 
-		return this.bucketBaseUrl + saveDir + saveFileName;
+		CommonUtil.makeDirs( saveDir );
+
+		file.transferTo( new File( saveDir + saveFileName ) );
+
+		return this.bucketBaseUrl + saveFileName;
 	}
 
 	/**
