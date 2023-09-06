@@ -81,7 +81,7 @@ public class MainService extends CommonService {
 		}
 
 		mainDAO.insertBucket(paramMap);	// 버킷 등록
-		log.info(":::버킷 등록 완료:::");
+		log.info(":::버킷 등록 완료::: bucketSeqNo : " + (String)paramMap.get("bucketSeqNo") + ")");
 
 		return (String)paramMap.get("bucketSeqNo");
 	}
