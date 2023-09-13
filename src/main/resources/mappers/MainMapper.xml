@@ -34,7 +34,7 @@
 		FROM   TB_BUCKET_MNG
 		WHERE  DEL_YN = 'N'
 		<if test="userSeq != null">
-			AND USER_SEQ = #userSeq#
+			AND USER_SEQ = #{userSeq}
 		</if>
 		ORDER BY BUCKET_SEQ DESC
 		LIMIT  #{stNo}, #{searchCnt}
