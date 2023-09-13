@@ -54,6 +54,7 @@ public class MainController extends CommonController {
         return super.getResponse(rsMap);
     }
 
+
     @ResponseBody
     @PostMapping( value = "/regBucket" )
     public Map<String, Object> regBucket(HttpServletRequest request, @RequestParam( required=false, value="file" ) MultipartFile file, @RequestParam Map<String, Object> paramMap) throws Exception {
@@ -65,5 +66,7 @@ public class MainController extends CommonController {
 
         return super.getResponse(rsMap);
     }
+
+
 
 }

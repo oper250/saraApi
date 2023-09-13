@@ -33,6 +33,7 @@ dependencies {
 	implementation("commons-io:commons-io:2.11.0")
 	implementation("com.fasterxml.jackson.core:jackson-databind:2.15.0")
 	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.0")
+	implementation("io.jsonwebtoken:jjwt:0.9.1")
 
 	runtimeOnly("mysql:mysql-connector-java:8.0.33")
 }

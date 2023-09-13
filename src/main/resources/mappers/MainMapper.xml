@@ -20,7 +20,8 @@
 	</select>
 
 	<select id="selectBucketList" parameterType="hashMap" resultType="CamelJSONObject">
-		SELECT BUCKET_SEQ,
+		SELECT ROW_NUMBER() OVER(ORDER BY BUCKET_SEQ DESC) AS RN,
+		       BUCKET_SEQ,
 			   USER_SEQ,
 			   BUCKET_NM,
 			   BUCKET_DSCR,
@@ -32,6 +33,9 @@
 				   END) AS MORE_YN
 		FROM   TB_BUCKET_MNG
 		WHERE  DEL_YN = 'N'
+		<if test="userSeq != null">
+			AND USER_SEQ = #userSeq#
+		</if>
 		ORDER BY BUCKET_SEQ DESC
 		LIMIT  #{stNo}, #{searchCnt}
 	</select>
