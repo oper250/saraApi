@@ -49,7 +49,7 @@
 			   DEL_YN,
 			   (CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y' ELSE 'N' END) AS MORE_YN
 		FROM TB_STORY_MNG
-		WHERE BUCKET_SEQ = '129'
+		WHERE BUCKET_SEQ = #{bucketSeq}
 		LIMIT  #{stNo}, #{searchCnt}
 	</select>
 
