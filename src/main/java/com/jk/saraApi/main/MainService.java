@@ -88,8 +88,29 @@ public class MainService extends CommonService {
 		return (String)paramMap.get("bucketSeqNo");
 	}
 
-	public static void main(String[] args) throws Exception{
-		System.out.println(Encryptor.sha512( "Camac250#"));
+	public Map<String, Object> getStoryList(Map<String, Object> paramMap) throws Exception {
+		String[] reqKeys = {"stNo", "bucketSeq"};		// 필수키
+		super.checkVal(paramMap, reqKeys);
+
+		Map<String, Object> rsMap = new HashMap<String, Object>();
+		String moreYn = "";		// 더보기여부
+		int nextStNo = 0;
+
+		paramMap.put("searchCnt", GET_STORY_ITEMS_SEARCH_COUNT);
+
+		// 버킷 목록 조회
+		List<Map<String, Object>> storyList = mainDAO.selectStoryList(paramMap);
+
+		if( !CommonUtil.isEmptyList(storyList) ) {
+			moreYn = (String) storyList.get(0).get("moreYn");		// 더보기여부 SET
+			nextStNo = (Integer) paramMap.get("stNo") + GET_STORY_ITEMS_SEARCH_COUNT;
+		}
+
+		rsMap.put( "rsList", storyList );
+		rsMap.put( "moreYn", moreYn );
+		rsMap.put( "nextStNo", nextStNo );
+
+		return rsMap;
 	}
 
 }

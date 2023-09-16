@@ -66,4 +66,18 @@ public class MainController extends CommonController {
         return super.getResponse(rsMap);
     }
 
+    @ResponseBody
+    @PostMapping( value = "/getStoryList" )
+    public Map<String, Object> getStoryList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
+        Map<String, Object> rsMap;
+
+        rsMap = mainService.getStoryList(paramMap);
+
+        rsMap.put("rsList", rsMap.get("rsList"));
+        rsMap.put("moreYn", rsMap.get("moreYn"));
+        rsMap.put("nextStNo", rsMap.get("nextStNo"));
+
+        return super.getResponse(rsMap);
+    }
+
 }
