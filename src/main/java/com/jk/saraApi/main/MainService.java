@@ -25,8 +25,8 @@ public class MainService extends CommonService {
 		super(MainService.class);
 	}
 
-	private static final int GET_BUCKET_ITEMS_SEARCH_COUNT = 20;		// 버킷리스트 조회건수
-	private static final int GET_STORY_ITEMS_SEARCH_COUNT = 20;			// 스토리리스트 조회건수
+	private static final int GET_BUCKET_ITEMS_SEARCH_COUNT = 30;		// 버킷리스트 조회건수
+	private static final int GET_STORY_ITEMS_SEARCH_COUNT = 30;			// 스토리리스트 조회건수
 
 	/* 로그인 */
 	public String login(Map<String, Object> paramMap) throws Exception {
