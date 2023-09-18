@@ -54,19 +54,19 @@
 	</select>
 
 	<select id="selectAlarmList" parameterType="JSONObject" resultType="CamelJSONObject">
-		SELECT TA.ALARM_GUBUN,
-			   TA.ALARM_NO,
-			   TA.ALARM_CONTENTS,
-			   TA.USER_SEQ,
-			   TA.SEND_USER_SEQ,
-			   TA.REG_DTTM
-		FROM TB_ALARM_MNG
-		INNER JOIN TB_USER_MNG TU
-				ON TA.USER_SEQ = TU.USER_SEQ
+		SELECT A.ALARM_GUBUN,
+			   A.ALARM_NO,
+			   A.ALARM_CONTENTS,
+			   A.USER_SEQ,
+			   A.SEND_USER_SEQ,
+			   A.REG_DTTM
+		FROM TB_ALARM_MNG A
+		INNER JOIN TB_USER_MNG B
+				ON A.USER_SEQ = B.USER_SEQ
 		WHERE USER_SEQ = #{userSeq}
-		  AND ALARM_GUBUN = #{alarmGubun}
-		  AND TA.REG_DTTM >= TU.REG_DTTM
-		ORDER BY REG_DTTM DESC
+		  AND A.ALARM_GUBUN = #{alarmGubun}
+		  AND A.REG_DTTM >= B.REG_DTTM
+		ORDER BY A.REG_DTTM DESC
 	</select>
 
 
