@@ -13,7 +13,7 @@ public class CommonUtil {
 
 	public static final String SEPARATOR = "/";
 
-	private static final String[] ACCEPT_FORMATS = { "jpg", "jpeg" };
+	private static final String[] ACCEPT_FORMATS = { "jpg", "jpeg", "png" };
 
 	public static boolean isNull( Object obj ) {
 		return obj == null;
