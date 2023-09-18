@@ -59,9 +59,9 @@ public class MainController extends CommonController {
     public Map<String, Object> regBucket(HttpServletRequest request, @RequestParam( required=false, value="file" ) MultipartFile file, @RequestParam Map<String, Object> paramMap) throws Exception {
         Map<String, Object> rsMap = new HashMap<String, Object>();
 
-        String bucketSeqNo = mainService.regBucket(paramMap, file);
+        String bucketSeq = mainService.regBucket(paramMap, file);
 
-        rsMap.put("bucketSeqNo", bucketSeqNo);
+        rsMap.put("bucketSeq", bucketSeq);
 
         return super.getResponse(rsMap);
     }
@@ -76,6 +76,15 @@ public class MainController extends CommonController {
         rsMap.put("rsList", rsMap.get("rsList"));
         rsMap.put("moreYn", rsMap.get("moreYn"));
         rsMap.put("nextStNo", rsMap.get("nextStNo"));
+
+        return super.getResponse(rsMap);
+    }
+    @ResponseBody
+    @PostMapping( value = "/getAlarmList" )
+    public Map<String, Object> getAlarmList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
+        Map<String, Object>  rsMap = mainService.getAlarmList(paramMap);
+
+        rsMap.put("rsList", rsMap.get("rsList"));
 
         return super.getResponse(rsMap);
     }

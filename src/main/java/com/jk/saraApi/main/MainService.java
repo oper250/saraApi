@@ -81,9 +81,7 @@ public class MainService extends CommonService {
 		}
 
 		mainDAO.insertBucket(paramMap);	// 버킷 등록
-		log.info(":::버킷 등록 완료::: bucketSeqNo : " + (String)paramMap.get("bucketSeqNo") + ")");
-
-		log.info("~~~~~~" + paramMap);
+		log.info(":::버킷 등록 완료::: bucketSeq : " + (String)paramMap.get("bucketSeq") + ")");
 
 		return (String)paramMap.get("bucketSeqNo");
 	}
@@ -109,6 +107,19 @@ public class MainService extends CommonService {
 		rsMap.put( "rsList", storyList );
 		rsMap.put( "moreYn", moreYn );
 		rsMap.put( "nextStNo", nextStNo );
+
+		return rsMap;
+	}
+
+	public Map<String, Object> getAlarmList(Map<String, Object> paramMap) throws Exception {
+		String[] reqKeys = {"alarmGubun", "userSeq"};		// 필수키
+		super.checkVal(paramMap, reqKeys);
+
+		Map<String, Object> rsMap = new HashMap<String, Object>();
+
+		List<Map<String, Object>> alarmList = mainDAO.selectAlarmList(paramMap);
+
+		rsMap.put( "rsList", alarmList );
 
 		return rsMap;
 	}

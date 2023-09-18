@@ -29,6 +29,12 @@ public class MainDAO extends CommonDAO {
 		return sqlSession.selectList("MainMapper.selectStoryList", paramMap);
 	}
 
+	/* 알람리스트 조회 */
+	public List<Map<String, Object>> selectAlarmList(Map<String, Object> paramMap) throws Exception {
+		return sqlSession.selectList("MainMapper.selectAlarmList", paramMap);
+	}
+
+
 	/* 버킷 목록조회 *//*
 	public List<JSONObject> getBucketItems(JSONObject param) throws Exception {
 		return sqlSession.selectList( "BucketMapper.selectBucketItems", param );

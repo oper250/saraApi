@@ -53,6 +53,21 @@
 		LIMIT  #{stNo}, #{searchCnt}
 	</select>
 
+	<select id="selectAlarmList" parameterType="JSONObject" resultType="CamelJSONObject">
+		SELECT TA.ALARM_GUBUN,
+			   TA.ALARM_NO,
+			   TA.ALARM_CONTENTS,
+			   TA.USER_SEQ,
+			   TA.SEND_USER_SEQ,
+			   TA.REG_DTTM
+		FROM TB_ALARM_MNG
+		INNER JOIN TB_USER_MNG TU
+				ON TA.USER_SEQ = TU.USER_SEQ
+		WHERE USER_SEQ = #{userSeq}
+		  AND ALARM_GUBUN = #{alarmGubun}
+		  AND TA.REG_DTTM >= TU.REG_DTTM
+		ORDER BY REG_DTTM DESC
+	</select>
 
 
 
@@ -108,4 +123,5 @@
 		   SET DEL_YN = 'Y'
 		 WHERE BUCKET_SEQNO = #{bucketSeqno}
 	</update>
+
 </mapper>
