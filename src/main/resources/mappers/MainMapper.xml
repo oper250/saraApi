@@ -83,6 +83,19 @@
 		  AND DEL_YN = 'N'
 	</select>
 
+	<select id="selectSuggestBucketList" parameterType="JSONObject" resultType="CamelJSONObject">
+		SELECT USER_SEQ,
+			   USER_ID,
+			   USER_PWD,
+			   PROFILE_URL,
+			   INTRO_DESC,
+			   REG_DTTM,
+			   DEL_YN
+		FROM TB_USER_MNG
+		WHERE USER_ID LIKE '%'||#{searchText}||'%'
+		  AND DEL_YN = 'N'
+	</select>
+
 
 
 	<select id="selectBucketDtlItem" parameterType="JSONObject" resultType="CamelJSONObject">

@@ -137,6 +137,16 @@ public class MainService extends CommonService {
 		return rsMap;
 	}
 
+	public Map<String, Object>getSuggestBucketList(Map<String, Object> paramMap) throws Exception {
+		Map<String, Object> rsMap = new HashMap<String, Object>();
+
+		List<Map<String, Object>> rsList = mainDAO.getSuggestBucketList(paramMap);
+
+		rsMap.put( "rsList", rsList );
+
+		return rsMap;
+	}
+
 	public String regSuggestBucket(Map<String, Object> paramMap, MultipartFile file) throws Exception {
 		// 파일업로드 및 업로드경로 SET
 		if ( file != null && !file.isEmpty() ){

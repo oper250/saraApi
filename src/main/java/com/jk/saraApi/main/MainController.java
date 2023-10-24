@@ -101,6 +101,17 @@ public class MainController extends CommonController {
     }
 
     @ResponseBody
+    @PostMapping( value = "/getSuggestBucketList" )
+    public Map<String, Object> getSuggestBucketList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
+        log.info(">>> parameter" + paramMap.get("searchText"));
+        Map<String, Object> rsMap = mainService.getSuggestBucketList(paramMap);
+
+        rsMap.put("rsList", rsMap.get("rsList"));
+
+        return super.getResponse(rsMap);
+    }
+
+    @ResponseBody
     @PostMapping( value = "/regSuggestBucket" )
     // 추천 버킷리스트 등록 (관리자용)
     public Map<String, Object> regSuggestBucket(HttpServletRequest request, @RequestParam( required=false, value="file" ) MultipartFile file, @RequestParam Map<String, Object> paramMap) throws Exception {
