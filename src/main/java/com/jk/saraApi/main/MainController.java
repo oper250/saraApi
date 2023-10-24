@@ -100,4 +100,17 @@ public class MainController extends CommonController {
         return super.getResponse(rsMap);
     }
 
+    @ResponseBody
+    @PostMapping( value = "/regSuggestBucket" )
+    // 추천 버킷리스트 등록 (관리자용)
+    public Map<String, Object> regSuggestBucket(HttpServletRequest request, @RequestParam( required=false, value="file" ) MultipartFile file, @RequestParam Map<String, Object> paramMap) throws Exception {
+        Map<String, Object> rsMap = new HashMap<String, Object>();
+
+        String suggestBucketSeq = mainService.regSuggestBucket(paramMap, file);
+
+        rsMap.put("suggestBucketSeq", suggestBucketSeq);
+
+        return super.getResponse(rsMap);
+    }
+
 }

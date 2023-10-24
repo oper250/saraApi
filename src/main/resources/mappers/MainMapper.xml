@@ -113,6 +113,22 @@
 				'N')
 	</insert>
 
+	<insert id="insertSuggestBucket" parameterType="JSONObject" useGeneratedKeys="true" keyProperty="suggestBucketSeq">
+		INSERT INTO TB_SUGGEST_BUCKET_MNG
+				(SUGGEST_BUCKET_SEQ,
+		 		SUGGEST_BUCKET_GROUP,
+		 		SUGGEST_BUCKET_NM,
+		 		SCRAP_CNT,
+		 		REP_IMG_URL)
+		VALUES(
+		       #{suggestBucketSeq},
+			   #{suggestBucketGroup},
+			   #{suggestBucketNm},
+			   0,
+			   #{repImgUrl})
+	</insert>
+
+
 	<insert id="insertStory" parameterType="JSONObject" useGeneratedKeys="true" keyProperty="bucketStorySeqno">
 		INSERT INTO TB_STORY_MNG
 		            (BUCKET_SEQNO,

@@ -83,7 +83,7 @@ public class MainService extends CommonService {
 		mainDAO.insertBucket(paramMap);	// 버킷 등록
 		log.info(":::버킷 등록 완료::: bucketSeq : " + (String)paramMap.get("bucketSeq") + ")");
 
-		return (String)paramMap.get("bucketSeqNo");
+		return (String)paramMap.get("bucketSeq");
 	}
 
 	public Map<String, Object> getStoryList(Map<String, Object> paramMap) throws Exception {
@@ -135,6 +135,18 @@ public class MainService extends CommonService {
 		rsMap.put( "rsList", userList );
 
 		return rsMap;
+	}
+
+	public String regSuggestBucket(Map<String, Object> paramMap, MultipartFile file) throws Exception {
+		// 파일업로드 및 업로드경로 SET
+		if ( file != null && !file.isEmpty() ){
+			paramMap.put("repImgUrl", imageUtil.uplaodBucketRepImage(file));
+			log.info(":::파일 업로드 완료:::");
+		}
+
+		mainDAO.insertSuggestBucket(paramMap);	// 버킷 등록
+
+		return (String)paramMap.get("suggestBucketSeq");
 	}
 
 }
