@@ -84,16 +84,14 @@
 	</select>
 
 	<select id="selectSuggestBucketList" parameterType="JSONObject" resultType="CamelJSONObject">
-		SELECT USER_SEQ,
-			   USER_ID,
-			   USER_PWD,
-			   PROFILE_URL,
-			   INTRO_DESC,
-			   REG_DTTM,
-			   DEL_YN
-		FROM TB_USER_MNG
-		WHERE USER_ID LIKE '%'||#{searchText}||'%'
-		  AND DEL_YN = 'N'
+		SELECT
+			SUGGEST_BUCKET_SEQ,
+			SUGGEST_BUCKET_GROUP,
+			SUGGEST_BUCKET_NM,
+			SCRAP_CNT,
+			REP_IMG_URL
+		FROM
+			TB_SUGGEST_BUCKET_MNG
 	</select>
 
 
