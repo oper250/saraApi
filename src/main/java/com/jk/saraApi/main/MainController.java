@@ -92,7 +92,7 @@ public class MainController extends CommonController {
     @ResponseBody
     @PostMapping( value = "/getUserList" )
     public Map<String, Object> getUserList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
-        Map<String, Object>  rsMap = mainService.getAlarmList(paramMap);
+        Map<String, Object>  rsMap = mainService.getUserList(paramMap);
 
         rsMap.put("rsList", rsMap.get("rsList"));
 
