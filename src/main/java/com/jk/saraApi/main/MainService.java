@@ -124,4 +124,17 @@ public class MainService extends CommonService {
 		return rsMap;
 	}
 
+	public Map<String, Object>getUserList(Map<String, Object> paramMap) throws Exception {
+		String[] reqKeys = {"searchText"};		// 필수키
+		super.checkVal(paramMap, reqKeys);
+
+		Map<String, Object> rsMap = new HashMap<String, Object>();
+
+		List<Map<String, Object>> userList = mainDAO.selectUserList(paramMap);
+
+		rsMap.put( "rsList", userList );
+
+		return rsMap;
+	}
+
 }

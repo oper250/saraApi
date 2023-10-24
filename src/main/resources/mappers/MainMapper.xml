@@ -70,9 +70,12 @@
 		ORDER BY A.REG_DTTM DESC
 	</select>
 
-
-
-
+	<select id="selectUserList" parameterType="JSONObject" resultType="CamelJSONObject">
+		SELECT *
+		FROM TB_USER_MNG
+		WHERE USER_ID = #{searchText}
+		  AND DEL_YN = 'N'
+	</select>
 
 
 
