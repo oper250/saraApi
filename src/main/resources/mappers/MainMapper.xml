@@ -79,7 +79,7 @@
 		       REG_DTTM,
 		       DEL_YN
 		FROM TB_USER_MNG
-		WHERE USER_ID = #{searchText}
+		WHERE USER_ID LIKE '%'||#{searchText}||'%'
 		  AND DEL_YN = 'N'
 	</select>
 
