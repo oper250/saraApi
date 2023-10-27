@@ -159,12 +159,4 @@ public class MainService extends CommonService {
 		return (String)paramMap.get("suggestBucketSeq");
 	}
 
-	public Map<String, Object> getUserInfo(Map<String, Object> paramMap) throws Exception {
-		Map<String, Object> rsMap = mainDAO.selectUserInfo(paramMap);
-
-		rsMap.put( "rsMap", rsMap );
-
-		return rsMap;
-	}
-
 }
