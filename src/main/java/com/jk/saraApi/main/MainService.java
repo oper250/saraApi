@@ -160,7 +160,11 @@ public class MainService extends CommonService {
 	}
 
 	public Map<String, Object> getUserInfo(Map<String, Object> paramMap) throws Exception {
+		System.out.println("!!!!!!!!!!!" + paramMap);
+
 		Map<String, Object> rsMap = mainDAO.selectUserInfo(paramMap);
+
+		System.out.println("~~~~~~~~~" + rsMap);
 
 		rsMap.put( "rsMap", rsMap );
 
