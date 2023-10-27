@@ -161,7 +161,7 @@
 		 WHERE BUCKET_SEQNO = #{bucketSeqno}
 	</update>
 
-	<select id="selectUserInfo" parameterType="JSONObject" resultType="String">
+	<select id="selectUserInfo" parameterType="JSONObject" resultType="CamelJSONObject">
 		SELECT USER_SEQ, USER_ID, USER_PWD, PROFILE_URL, INTRO_DESC, REG_DTTM, DEL_YN
 		FROM TB_USER_MNG
 		WHERE USER_SEQ = #{userSeq}
