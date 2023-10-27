@@ -46,6 +46,10 @@ public class MainDAO extends CommonDAO {
 		return sqlSession.insert( "MainMapper.insertSuggestBucket", paramMap);
 	}
 
+	public Map<String, Object> selectUserInfo(Map<String, Object> paramMap) throws Exception {
+		return sqlSession.selectOne( "MainMapper.selectUserInfo", paramMap);
+	}
+
 	/* 버킷 목록조회 *//*
 	public List<JSONObject> getBucketItems(JSONObject param) throws Exception {
 		return sqlSession.selectList( "BucketMapper.selectBucketItems", param );

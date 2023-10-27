@@ -123,4 +123,12 @@ public class MainController extends CommonController {
         return super.getResponse(rsMap);
     }
 
+    @ResponseBody
+    @PostMapping( value = "/getUserInfo" )
+    // 추천 버킷리스트 등록 (관리자용)
+    public Map<String, Object> getUserInfo(HttpServletRequest request, @RequestParam Map<String, Object> paramMap) throws Exception {
+        Map<String, Object> rsMap = mainService.getUserInfo(paramMap);
+
+        return super.getResponse(rsMap);
+    }
 }
