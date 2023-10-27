@@ -1,7 +1,7 @@
 package com.jk.saraApi.common;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.ibatis.session.SqlSession;
 
 public class CommonDAO {
 
