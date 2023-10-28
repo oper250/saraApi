@@ -127,7 +127,11 @@ public class MainController extends CommonController {
     @PostMapping( value = "/getUserInfo" )
     // 추천 버킷리스트 등록 (관리자용)
     public Map<String, Object> getUserInfo(HttpServletRequest request, @RequestBody Map<String, Object> paramMap) throws Exception {
-        Map<String, Object> rsMap = mainService.getUserInfo(paramMap);
+        Map<String, Object> rsMap = new HashMap<String, Object>();
+
+        Map<String, Object> userMap = mainService.getUserInfo(paramMap);
+
+        rsMap.put("suggestBucketSeq", userMap);
 
         return super.getResponse(rsMap);
     }
