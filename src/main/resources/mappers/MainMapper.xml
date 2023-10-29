@@ -92,6 +92,9 @@
 			REP_IMG_URL
 		FROM
 			TB_SUGGEST_BUCKET_MNG
+		<if test="suggestBucketSeq != null">
+			AND SUGGEST_BUCKET_SEQ = #{suggestBucketSeq}
+		</if>
 	</select>
 
 
