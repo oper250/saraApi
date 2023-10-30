@@ -41,7 +41,8 @@
 	</select>
 
 	<select id="selectStoryList" parameterType="JSONObject" resultType="CamelJSONObject">
-		SELECT STORY_SEQ,
+		SELECT ROW_NUMBER() OVER(ORDER BY STORY_SEQ DESC) AS RN, STORY_SEQ,
+		       STORY_SEQ,
 			   BUCKET_SEQ,
 			   STORY_CONTENTS,
 			   IMG_URL,
