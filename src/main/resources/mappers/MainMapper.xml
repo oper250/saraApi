@@ -171,4 +171,13 @@
 		WHERE USER_SEQ = #{userSeq}
 	</select>
 
+	<select id="selectBucketDetail" parameterType="JSONObject" resultType="CamelJSONObject">
+		SELECT A.BUCKET_NM, A.REP_IMG_URL, B.PROFILE_URL, B.USER_ID
+		FROM TB_BUCKET_MNG A
+		INNER JOIN TB_USER_MNG B
+		        ON A.USER_SEQ = B.USER_SEQ
+		WHERE BUCKET_SEQ = '2'
+		  AND A.DEL_YN = 'N'
+	</select>
+
 </mapper>

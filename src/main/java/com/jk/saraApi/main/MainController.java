@@ -135,4 +135,16 @@ public class MainController extends CommonController {
 
         return super.getResponse(rsMap);
     }
+
+    @ResponseBody
+    @PostMapping( value = "/getBucketDetail" )
+    public Map<String, Object> getBucketDetail(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
+        Map<String, Object> rsMap = new HashMap<String, Object>();
+
+        rsMap = mainService.getBucketDetail(paramMap);
+
+        System.out.println("!!!!!!!!!!!!" + rsMap);
+
+        return super.getResponse(rsMap);
+    }
 }
