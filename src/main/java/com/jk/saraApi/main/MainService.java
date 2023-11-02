@@ -89,6 +89,7 @@ public class MainService extends CommonService {
 	}
 
 	public Map<String, Object> getStoryList(Map<String, Object> paramMap) throws Exception {
+		System.out.println("!!!!!!!!!!!!!" + paramMap);
 		String[] reqKeys = {"stNo", "bucketSeq"};		// 필수키
 		super.checkVal(paramMap, reqKeys);
 
@@ -100,6 +101,8 @@ public class MainService extends CommonService {
 
 		// 버킷 목록 조회
 		List<Map<String, Object>> storyList = mainDAO.selectStoryList(paramMap);
+
+		System.out.println("~~~~~~~~~~~~~~~~" + storyList);
 
 		if( !CommonUtil.isEmptyList(storyList) ) {
 			moreYn = (String) storyList.get(0).get("moreYn");		// 더보기여부 SET
