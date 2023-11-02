@@ -176,7 +176,7 @@
 		FROM TB_BUCKET_MNG A
 		INNER JOIN TB_USER_MNG B
 		        ON A.USER_SEQ = B.USER_SEQ
-		WHERE BUCKET_SEQ = '2'
+		WHERE BUCKET_SEQ = #{bucketSeq}
 		  AND A.DEL_YN = 'N'
 	</select>
 

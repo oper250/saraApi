@@ -139,9 +139,7 @@ public class MainController extends CommonController {
     @ResponseBody
     @PostMapping( value = "/getBucketDetail" )
     public Map<String, Object> getBucketDetail(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
-        Map<String, Object> rsMap = new HashMap<String, Object>();
-
-        rsMap = mainService.getBucketDetail(paramMap);
+        Map<String, Object> rsMap = mainService.getBucketDetail(paramMap);
 
         System.out.println("!!!!!!!!!!!!" + rsMap);
 
