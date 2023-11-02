@@ -172,8 +172,6 @@ public class MainService extends CommonService {
 	public Map<String, Object> getBucketDetail(Map<String, Object> paramMap) throws Exception {
 		Map<String, Object> rsMap = mainDAO.getBucketDetail(paramMap);
 
-		rsMap.put( "rsMap", rsMap );
-
 		return rsMap;
 	}
 }
