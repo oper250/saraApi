@@ -37,7 +37,6 @@ public class CommonController {
 		return resItem;
 	}
 
-	/*  */
 	public Map<String, Object> getResponse(Map<String, Object> rsMap) throws Exception {
 		rsMap.put("rsCode", "0000");
 		rsMap.put("rsMsg", "SUCCESS");

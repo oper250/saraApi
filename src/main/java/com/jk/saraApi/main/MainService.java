@@ -51,12 +51,19 @@ public class MainService extends CommonService {
 		super.checkVal(paramMap, reqKeys);
 
 		Map<String, Object> rsMap = new HashMap<String, Object>();
+		String searchGubun = (String)paramMap.get("searchGubun");
+
 		String moreYn = "";		// 더보기여부
 		int nextStNo = 0;
 
 		paramMap.put("searchCnt", GET_BUCKET_ITEMS_SEARCH_COUNT);
 
-		// 버킷 목록 조회
+//		if("bookmark".equals(searchGubun)) {			// 즐겨찾기 조회
+//			List<Map<String, Object>> bookmarkList = mainDAO.selectBookmarList(paramMap);
+//		} else {										// 버킷 목록 조회 (기본)
+//			List<Map<String, Object>> bucketList = mainDAO.selectBucketList(paramMap);
+//		}
+
 		List<Map<String, Object>> bucketList = mainDAO.selectBucketList(paramMap);
 
 		if( !CommonUtil.isEmptyList(bucketList) ) {
