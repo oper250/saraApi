@@ -75,6 +75,7 @@
 		SELECT USER_SEQ,
 		       USER_ID,
 		       USER_PWD,
+		       NICKNAME,
 		       PROFILE_URL,
 		       INTRO_DESC,
 		       REG_DTTM,
@@ -166,13 +167,13 @@
 	</update>
 
 	<select id="selectUserInfo" parameterType="JSONObject" resultType="CamelJSONObject">
-		SELECT USER_SEQ, USER_ID, USER_PWD, PROFILE_URL, INTRO_DESC, REG_DTTM, DEL_YN
+		SELECT USER_SEQ, USER_ID, USER_PWD, NICKNAME, PROFILE_URL, INTRO_DESC, REG_DTTM, DEL_YN
 		FROM TB_USER_MNG
 		WHERE USER_SEQ = #{userSeq}
 	</select>
 
 	<select id="selectBucketDetail" parameterType="JSONObject" resultType="CamelJSONObject">
-		SELECT A.BUCKET_NM, A.REP_IMG_URL, B.PROFILE_URL, B.USER_ID
+		SELECT A.BUCKET_NM, A.REP_IMG_URL, B.PROFILE_URL, B.USER_ID, B.NICKNAME
 		FROM TB_BUCKET_MNG A
 		INNER JOIN TB_USER_MNG B
 		        ON A.USER_SEQ = B.USER_SEQ
