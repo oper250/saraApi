@@ -39,10 +39,10 @@
 				   END) AS MORE_YN
 		FROM   TB_BUCKET_MNG
 		WHERE  DEL_YN = 'N'
-		<if test="userSeq != null">
+		<if test="searchGubun == 'mine' and userSeq != null">
 			AND USER_SEQ = #{userSeq}
 		</if>
-		<if test="bookmarkNo != null">
+		<if test="searchGubun == 'bookmark' and bookmarkNo != null">
 			AND BUCKET_SEQ IN
 			<foreach collection="bookmarkNo" item="arr" open="(" separator="," close=")">
 				#{arr}
