@@ -69,7 +69,7 @@ public class MainService extends CommonService {
 			paramMap.put("bookmarkNo", bookmarkNo);
 		}
 
-		System.out.println("!!!!!!!" + bookmarkList);
+		System.out.println("!!!!!!!" + paramMap.get("bookmarkNo"));
 
 //		if("bookmark".equals(searchGubun)) {			// 즐겨찾기 조회
 //			List<Map<String, Object>> bookmarkList = mainDAO.selectBookmarList(paramMap);

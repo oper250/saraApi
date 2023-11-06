@@ -44,7 +44,7 @@
 		</if>
 		<if test="bookmarkNo != null">
 			<foreach collection="array" item="bookmarkNo" index="index" open="(" separator="," close=")">
-				#{bookmarkNo.value}
+				#{bookmarkNo}
 			</foreach>
 		</if>
 		ORDER BY BUCKET_SEQ DESC
