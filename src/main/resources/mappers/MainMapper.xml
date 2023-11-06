@@ -46,10 +46,6 @@
 		LIMIT  #{stNo}, #{searchCnt}
 	</select>
 
-	<select id="selectBookmarList" parameterType="hashMap" resultType="CamelJSONObject">
-
-	</select>
-
 	<select id="selectStoryList" parameterType="JSONObject" resultType="CamelJSONObject">
 		SELECT ROW_NUMBER() OVER(ORDER BY STORY_SEQ DESC) AS RN, STORY_SEQ,
 		       STORY_SEQ,
