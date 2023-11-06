@@ -22,7 +22,7 @@
 	<select id="selectBookmarkList" parameterType="hashMap" resultType="CamelJSONObject">
 		SELECT GROUP_CONCAT(BOOKMARK_NO, '') AS bookmarkNo
 		FROM TB_BOOKMARK_MNG A
-		WHERE A.USER_SEQ = '0'
+		WHERE A.USER_SEQ = #{bucketSeq}
 	</select>
 
 	<select id="selectBucketList" parameterType="hashMap" resultType="CamelJSONObject">
