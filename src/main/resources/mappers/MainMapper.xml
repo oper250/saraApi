@@ -42,6 +42,11 @@
 		<if test="userSeq != null">
 			AND USER_SEQ = #{userSeq}
 		</if>
+		<if test="bookmarkNo != null">
+			<foreach collection="array" item="bookmarkNo" index="index" open="(" separator="," close=")">
+				#{bookmarkNo.value}
+			</foreach>
+		</if>
 		ORDER BY BUCKET_SEQ DESC
 		LIMIT  #{stNo}, #{searchCnt}
 	</select>
