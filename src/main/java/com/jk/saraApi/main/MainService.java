@@ -58,7 +58,16 @@ public class MainService extends CommonService {
 
 		paramMap.put("searchCnt", GET_BUCKET_ITEMS_SEARCH_COUNT);
 
-		List<Map<String, Object>> bookmarkList = mainDAO.selectBookmarkList(paramMap);
+		Map<String, Object> bookmarkList = mainDAO.selectBookmarkList(paramMap);
+
+		String[] bookmarkNo = null;
+
+		System.out.println("~~~" + (String)bookmarkList.get("bookmarkno"));
+
+		if ( bookmarkList.size() > 0 ) {
+			bookmarkNo = bookmarkList.get("bookmarkno").toString().split(",");
+			System.out.println("2222" + bookmarkNo);
+		}
 
 		System.out.println("!!!!!!!" + bookmarkList);
 
