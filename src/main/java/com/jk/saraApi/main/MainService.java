@@ -65,9 +65,8 @@ public class MainService extends CommonService {
 		String[] bookmarkNo = null;
 
 		if ( bookmarkList != null ) {
-			System.out.println("~~~" + (String)bookmarkList.get("bookmarkno"));
 			bookmarkNo = bookmarkList.get("bookmarkno").toString().split(",");
-			System.out.println("2222" + bookmarkNo);
+			paramMap.put("bookmarkNo", bookmarkNo);
 		}
 
 		System.out.println("!!!!!!!" + bookmarkList);
@@ -77,8 +76,6 @@ public class MainService extends CommonService {
 //		} else {										// 버킷 목록 조회 (기본)
 //			List<Map<String, Object>> bucketList = mainDAO.selectBucketList(paramMap);
 //		}
-
-		System.out.println("@@@@@@@@@@@@@ : " + paramMap);
 
 		List<Map<String, Object>> bucketList = mainDAO.selectBucketList(paramMap);
 
