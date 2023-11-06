@@ -39,7 +39,7 @@
 				   END) AS MORE_YN
 		FROM   TB_BUCKET_MNG
 		WHERE  DEL_YN = 'N'
-		<if test="searchGubun == 'mine' and userSeq != null">
+		<if test="searchGubun == 'mine'">
 			AND USER_SEQ = #{userSeq}
 		</if>
 		<if test="searchGubun == 'bookmark'">
