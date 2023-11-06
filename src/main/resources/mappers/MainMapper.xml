@@ -42,13 +42,6 @@
 		<if test="userSeq != null">
 			AND USER_SEQ = #{userSeq}
 		</if>
-		  	AND  BUCKET_SEQ IN (
-		<foreach collection="array" item="bookmarkNo" index="index" open="(" separator="," close=")">
-					SELECT GROUP_CONCAT(BOOKMARK_NO, '') AS bookmarkNo
-					FROM TB_BOOKMARK_MNG A
-					WHERE A.USER_SEQ = '0'
-		</foreach>
-				)
 		ORDER BY BUCKET_SEQ DESC
 		LIMIT  #{stNo}, #{searchCnt}
 	</select>
