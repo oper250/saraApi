@@ -64,7 +64,7 @@ public class MainService extends CommonService {
 
 		String[] bookmarkNo = null;
 
-		if ( bookmarkList.size() > 0 ) {
+		if ( bookmarkList != null ) {
 			System.out.println("~~~" + (String)bookmarkList.get("bookmarkno"));
 			bookmarkNo = bookmarkList.get("bookmarkno").toString().split(",");
 			System.out.println("2222" + bookmarkNo);
