@@ -58,6 +58,10 @@ public class MainService extends CommonService {
 
 		paramMap.put("searchCnt", GET_BUCKET_ITEMS_SEARCH_COUNT);
 
+		List<Map<String, Object>> bookmarkList = mainDAO.selectBookmarkList(paramMap);
+
+		System.out.println("!!!!!!!" + bookmarkList);
+
 //		if("bookmark".equals(searchGubun)) {			// 즐겨찾기 조회
 //			List<Map<String, Object>> bookmarkList = mainDAO.selectBookmarList(paramMap);
 //		} else {										// 버킷 목록 조회 (기본)

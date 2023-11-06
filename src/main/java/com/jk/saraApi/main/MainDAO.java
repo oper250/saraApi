@@ -15,8 +15,8 @@ public class MainDAO extends CommonDAO {
 	}
 
 	// 즐겨찾기 리스트
-	public List<Map<String, Object>> selectBookmarList(Map<String, Object> paramMap) throws Exception {
-		return sqlSession.selectList("MainMapper.selectBookmarList", paramMap);
+	public List<Map<String, Object>> selectBookmarkList(Map<String, Object> paramMap) throws Exception {
+		return sqlSession.selectList("MainMapper.selectBookmarkList", paramMap);
 	}
 
 	// 버킷리스트 조회
