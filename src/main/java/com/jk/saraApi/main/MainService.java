@@ -56,15 +56,16 @@ public class MainService extends CommonService {
 		String moreYn = "";		// 더보기여부
 		int nextStNo = 0;
 
+		System.out.println("!!!!~~~~~~~~!!!");
+
 		paramMap.put("searchCnt", GET_BUCKET_ITEMS_SEARCH_COUNT);
 
 		Map<String, Object> bookmarkList = mainDAO.selectBookmarkList(paramMap);
 
 		String[] bookmarkNo = null;
 
-		System.out.println("~~~" + (String)bookmarkList.get("bookmarkno"));
-
 		if ( bookmarkList.size() > 0 ) {
+			System.out.println("~~~" + (String)bookmarkList.get("bookmarkno"));
 			bookmarkNo = bookmarkList.get("bookmarkno").toString().split(",");
 			System.out.println("2222" + bookmarkNo);
 		}
