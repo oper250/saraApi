@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +53,7 @@ public class MainService extends CommonService {
 
 		Map<String, Object> rsMap = new HashMap<String, Object>();
 		String searchGubun = (String)paramMap.get("searchGubun");
-		List<Map<String, Object>> bucketList = null;
+		List<Map<String, Object>> bucketList = new ArrayList<Map<String, Object>>();
 
 		String moreYn = "";		// 더보기여부
 		int nextStNo = 0;
