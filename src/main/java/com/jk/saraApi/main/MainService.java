@@ -52,6 +52,7 @@ public class MainService extends CommonService {
 
 		Map<String, Object> rsMap = new HashMap<String, Object>();
 		String searchGubun = (String)paramMap.get("searchGubun");
+		List<Map<String, Object>> bucketList = null;
 
 		String moreYn = "";		// 더보기여부
 		int nextStNo = 0;
@@ -63,14 +64,17 @@ public class MainService extends CommonService {
 
 			if ( bookmarkList != null ) {
 				paramMap.put("bookmarkNo", bookmarkList.get("bookmarkno").toString().split(","));
+				bucketList = mainDAO.selectBucketList(paramMap);
 			}
+		} else {
+			bucketList = mainDAO.selectBucketList(paramMap);
 		}
-
-		List<Map<String, Object>> bucketList = mainDAO.selectBucketList(paramMap);
 
 		if( !CommonUtil.isEmptyList(bucketList) ) {
 			moreYn = (String) bucketList.get(0).get("moreYn");		// 더보기여부 SET
 			nextStNo = (Integer) paramMap.get("stNo") + GET_BUCKET_ITEMS_SEARCH_COUNT;
+		} else {
+			moreYn = "N";
 		}
 
 		rsMap.put( "rsList", bucketList );
