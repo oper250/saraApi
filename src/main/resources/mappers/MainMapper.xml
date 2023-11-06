@@ -42,7 +42,7 @@
 		<if test="searchGubun == 'mine' and userSeq != null">
 			AND USER_SEQ = #{userSeq}
 		</if>
-		<if test="searchGubun == 'bookmark' and bookmarkNo != null">
+		<if test="searchGubun == 'bookmark'">
 			AND BUCKET_SEQ IN
 			<foreach collection="bookmarkNo" item="arr" open="(" separator="," close=")">
 				#{arr}
