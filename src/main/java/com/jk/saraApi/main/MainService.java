@@ -56,27 +56,15 @@ public class MainService extends CommonService {
 		String moreYn = "";		// 더보기여부
 		int nextStNo = 0;
 
-		System.out.println("!!!!~~~~~~~~!!!");
-
 		paramMap.put("searchCnt", GET_BUCKET_ITEMS_SEARCH_COUNT);
 
-		Map<String, Object> bookmarkList = mainDAO.selectBookmarkList(paramMap);
+		if ("bookmark".equals(paramMap.get("searchGubun"))) {
+			Map<String, Object> bookmarkList = mainDAO.selectBookmarkList(paramMap);
 
-		String[] bookmarkNo = null;
-
-		if ( bookmarkList != null ) {
-			bookmarkNo = bookmarkList.get("bookmarkno").toString().split(",");
-			paramMap.put("bookmarkNo", bookmarkNo);
-			System.out.println("%%" + bookmarkNo[0]);
+			if ( bookmarkList != null ) {
+				paramMap.put("bookmarkNo", bookmarkList.get("bookmarkno").toString().split(","));
+			}
 		}
-
-		System.out.println("!!!!!!!" + paramMap.get("bookmarkNo"));
-
-//		if("bookmark".equals(searchGubun)) {			// 즐겨찾기 조회
-//			List<Map<String, Object>> bookmarkList = mainDAO.selectBookmarList(paramMap);
-//		} else {										// 버킷 목록 조회 (기본)
-//			List<Map<String, Object>> bucketList = mainDAO.selectBucketList(paramMap);
-//		}
 
 		List<Map<String, Object>> bucketList = mainDAO.selectBucketList(paramMap);
 
