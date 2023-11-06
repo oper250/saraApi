@@ -67,6 +67,7 @@ public class MainService extends CommonService {
 		if ( bookmarkList != null ) {
 			bookmarkNo = bookmarkList.get("bookmarkno").toString().split(",");
 			paramMap.put("bookmarkNo", bookmarkNo);
+			System.out.println("%%" + bookmarkNo[0]);
 		}
 
 		System.out.println("!!!!!!!" + paramMap.get("bookmarkNo"));

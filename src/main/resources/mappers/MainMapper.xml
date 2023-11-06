@@ -43,6 +43,7 @@
 			AND USER_SEQ = #{userSeq}
 		</if>
 		<if test="bookmarkNo != null">
+			AND BUCKET_SEQ IN
 			<foreach collection="array" item="bookmarkNo" index="index" open="(" separator="," close=")">
 				#{bookmarkNo}
 			</foreach>
