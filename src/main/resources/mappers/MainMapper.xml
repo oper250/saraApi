@@ -19,12 +19,6 @@
 			) T1
 	</select>
 
-	<select id="selectBookmarkList" parameterType="hashMap" resultType="CamelJSONObject">
-		SELECT GROUP_CONCAT(BOOKMARK_NO, '') AS bookmarkNo
-		FROM TB_BOOKMARK_MNG A
-		WHERE A.USER_SEQ = #{bucketSeq}
-	</select>
-
 	<select id="selectBucketList" parameterType="hashMap" resultType="CamelJSONObject">
 		SELECT ROW_NUMBER() OVER(ORDER BY BUCKET_SEQ DESC) AS RN,
 		       BUCKET_SEQ,
@@ -81,7 +75,6 @@
 		SELECT USER_SEQ,
 		       USER_ID,
 		       USER_PWD,
-		       NICKNAME,
 		       PROFILE_URL,
 		       INTRO_DESC,
 		       REG_DTTM,
@@ -173,13 +166,13 @@
 	</update>
 
 	<select id="selectUserInfo" parameterType="JSONObject" resultType="CamelJSONObject">
-		SELECT USER_SEQ, USER_ID, USER_PWD, NICKNAME, PROFILE_URL, INTRO_DESC, REG_DTTM, DEL_YN
+		SELECT USER_SEQ, USER_ID, USER_PWD, PROFILE_URL, INTRO_DESC, REG_DTTM, DEL_YN
 		FROM TB_USER_MNG
 		WHERE USER_SEQ = #{userSeq}
 	</select>
 
 	<select id="selectBucketDetail" parameterType="JSONObject" resultType="CamelJSONObject">
-		SELECT A.BUCKET_NM, A.REP_IMG_URL, B.PROFILE_URL, B.USER_ID, B.NICKNAME
+		SELECT A.BUCKET_NM, A.REP_IMG_URL, B.PROFILE_URL, B.USER_ID
 		FROM TB_BUCKET_MNG A
 		INNER JOIN TB_USER_MNG B
 		        ON A.USER_SEQ = B.USER_SEQ
