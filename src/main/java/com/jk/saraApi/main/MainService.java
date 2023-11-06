@@ -78,6 +78,8 @@ public class MainService extends CommonService {
 //			List<Map<String, Object>> bucketList = mainDAO.selectBucketList(paramMap);
 //		}
 
+		System.out.println("@@@@@@@@@@@@@ : " + paramMap);
+
 		List<Map<String, Object>> bucketList = mainDAO.selectBucketList(paramMap);
 
 		if( !CommonUtil.isEmptyList(bucketList) ) {
