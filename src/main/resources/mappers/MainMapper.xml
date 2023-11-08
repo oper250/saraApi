@@ -49,7 +49,7 @@
 			</foreach>
 		</if>
 		<if test="searchGubun == 'searchBucket'">
-			AND BUCKET_NM LIKE LIKE '%'||#{searchText}||'%'
+			AND BUCKET_NM LIKE '%' + #{searchText} + '%'
 		</if>
 		ORDER BY BUCKET_SEQ DESC
 		LIMIT  #{stNo}, #{searchCnt}
@@ -95,7 +95,7 @@
 		       REG_DTTM,
 		       DEL_YN
 		FROM TB_USER_MNG
-		WHERE USER_ID LIKE '%'||#{searchText}||'%'
+		WHERE USER_ID LIKE '%' + #{searchText} + '%'
 		  AND DEL_YN = 'N'
 	</select>
 
