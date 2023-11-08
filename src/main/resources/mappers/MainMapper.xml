@@ -48,7 +48,7 @@
 				#{arr}
 			</foreach>
 		</if>
-		<if test="searchBucket == 'searchBucket'">
+		<if test="searchGubun == 'searchBucket'">
 			AND BUCKET_NM LIKE LIKE '%'||#{searchText}||'%'
 		</if>
 		ORDER BY BUCKET_SEQ DESC
