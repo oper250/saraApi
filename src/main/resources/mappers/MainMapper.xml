@@ -93,10 +93,14 @@
 		       PROFILE_URL,
 		       INTRO_DESC,
 		       REG_DTTM,
-		       DEL_YN
+		       DEL_YN,
+			   (CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y'
+					 ELSE 'N'
+				   END) AS MORE_YN
 		FROM TB_USER_MNG
 		WHERE USER_ID LIKE CONCAT('%',#{searchText},'%')
 		  AND DEL_YN = 'N'
+		LIMIT  #{stNo}, #{searchCnt}
 	</select>
 
 	<select id="selectSuggestBucketList" parameterType="JSONObject" resultType="CamelJSONObject">
