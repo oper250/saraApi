@@ -101,7 +101,7 @@ public class MainController extends CommonController {
     }
 
     @ResponseBody
-    @PostMapping( value = "/getSuggestBucketList" )
+    @PostMapping( value = "/getSuggestList" )
     public Map<String, Object> getSuggestList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
         Map<String, Object> rsMap = mainService.getSuggestList(paramMap);
 
