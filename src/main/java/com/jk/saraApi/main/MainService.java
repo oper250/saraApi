@@ -181,8 +181,11 @@ public class MainService extends CommonService {
 
 		List<Map<String, Object>> rsList = mainDAO.getSuggestList(paramMap);
 
+		System.out.println("rsList.size() : " + rsList.size());
+
 		for (int i =0; i < rsList.size(); i++) {
 			suggestBucketGroup = (String)rsList.get(i).get("SUGGEST_BUCKET_GROUP");
+			System.out.println("suggestBucketGroup :: " + suggestBucketGroup);
 			if("00".equals(suggestBucketGroup)) {
 				suggestList00.add(rsList.get(i));
 			} else if("01".equals(suggestBucketGroup)) {
@@ -193,6 +196,8 @@ public class MainService extends CommonService {
 				suggestList03.add(rsList.get(i));
 			}
 		}
+
+		System.out.println("suggestList00 :: " + suggestList00);
 
 		rsMap.put( "suggestList00", suggestList00 );
 		rsMap.put( "suggestList01", suggestList01 );
