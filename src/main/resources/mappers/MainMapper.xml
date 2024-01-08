@@ -103,20 +103,53 @@
 		LIMIT  #{stNo}, #{searchCnt}
 	</select>
 
-	<select id="selectSuggestBucketList" parameterType="JSONObject" resultType="CamelJSONObject">
+	<select id="selectSuggestList" parameterType="JSONObject" resultType="CamelJSONObject">
+		SELECT SUGGEST_BUCKET_SEQ,
+			   SUGGEST_BUCKET_GROUP,
+			   SUGGEST_BUCKET_NM,
+			   SCRAP_CNT,
+			   REP_IMG_URL
+		FROM TB_SUGGEST_BUCKET_MNG
+		WHERE SUGGEST_BUCKET_GROUP = '00'
+		UNION ALL
+		SELECT SUGGEST_BUCKET_SEQ,
+			   SUGGEST_BUCKET_GROUP,
+			   SUGGEST_BUCKET_NM,
+			   SCRAP_CNT,
+			   REP_IMG_URL
+		FROM TB_SUGGEST_BUCKET_MNG
+		WHERE SUGGEST_BUCKET_GROUP = '01'
+		UNION ALL
+		SELECT SUGGEST_BUCKET_SEQ,
+			   SUGGEST_BUCKET_GROUP,
+			   SUGGEST_BUCKET_NM,
+			   SCRAP_CNT,
+			   REP_IMG_URL
+		FROM TB_SUGGEST_BUCKET_MNG
+		WHERE SUGGEST_BUCKET_GROUP = '02'
+		UNION ALL
+		SELECT SUGGEST_BUCKET_SEQ,
+			   SUGGEST_BUCKET_GROUP,
+			   SUGGEST_BUCKET_NM,
+			   SCRAP_CNT,
+			   REP_IMG_URL
+		FROM TB_SUGGEST_BUCKET_MNG
+		WHERE SUGGEST_BUCKET_GROUP = '03'
+	</select>
+
+	<select id="selectSuggestDetail" parameterType="JSONObject" resultType="CamelJSONObject">
 		SELECT
 			SUGGEST_BUCKET_SEQ,
 			SUGGEST_BUCKET_GROUP,
 			SUGGEST_BUCKET_NM,
 			SCRAP_CNT,
 			REP_IMG_URL
-		FROM
-			TB_SUGGEST_BUCKET_MNG
+		FROM TB_SUGGEST_BUCKET_MNG
+		WHERE 1 = 1
 		<if test="suggestBucketSeq != null">
 			AND SUGGEST_BUCKET_SEQ = #{suggestBucketSeq}
 		</if>
 	</select>
-
 
 
 	<select id="selectBucketDtlItem" parameterType="JSONObject" resultType="CamelJSONObject">

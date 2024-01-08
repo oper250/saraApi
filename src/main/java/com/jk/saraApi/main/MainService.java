@@ -171,12 +171,33 @@ public class MainService extends CommonService {
 		return rsMap;
 	}
 
-	public Map<String, Object>getSuggestBucketList(Map<String, Object> paramMap) throws Exception {
+	public Map<String, Object>getSuggestList(Map<String, Object> paramMap) throws Exception {
 		Map<String, Object> rsMap = new HashMap<String, Object>();
+		List<Map<String, Object>> suggestList00 = null;
+		List<Map<String, Object>> suggestList01 = null;
+		List<Map<String, Object>> suggestList02 = null;
+		List<Map<String, Object>> suggestList03 = null;
+		String suggestBucketGroup = "";
 
-		List<Map<String, Object>> rsList = mainDAO.getSuggestBucketList(paramMap);
+		List<Map<String, Object>> rsList = mainDAO.getSuggestList(paramMap);
 
-		rsMap.put( "rsList", rsList );
+		for (int i =0; i < rsList.size(); i++) {
+			suggestBucketGroup = (String)rsList.get(i).get("SUGGEST_BUCKET_GROUP");
+			if(suggestBucketGroup == "00") {
+				suggestList00.add(rsList.get(i));
+			} else if (suggestBucketGroup == "01") {
+				suggestList01.add(rsList.get(i));
+			} else if (suggestBucketGroup == "02") {
+				suggestList02.add(rsList.get(i));
+			} else if (suggestBucketGroup == "03") {
+				suggestList03.add(rsList.get(i));
+			}
+		}
+
+		rsMap.put( "rsList", suggestList00 );
+		rsMap.put( "rsList", suggestList01 );
+		rsMap.put( "rsList", suggestList02 );
+		rsMap.put( "rsList", suggestList03 );
 
 		return rsMap;
 	}
