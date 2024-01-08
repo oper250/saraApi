@@ -183,13 +183,13 @@ public class MainService extends CommonService {
 
 		for (int i =0; i < rsList.size(); i++) {
 			suggestBucketGroup = (String)rsList.get(i).get("SUGGEST_BUCKET_GROUP");
-			if(suggestBucketGroup == "00") {
+			if("00".equals(suggestBucketGroup)) {
 				suggestList00.add(rsList.get(i));
-			} else if (suggestBucketGroup == "01") {
+			} else if("01".equals(suggestBucketGroup)) {
 				suggestList01.add(rsList.get(i));
-			} else if (suggestBucketGroup == "02") {
+			} else if("02".equals(suggestBucketGroup)) {
 				suggestList02.add(rsList.get(i));
-			} else if (suggestBucketGroup == "03") {
+			} else if("03".equals(suggestBucketGroup)) {
 				suggestList03.add(rsList.get(i));
 			}
 		}
