@@ -194,10 +194,10 @@ public class MainService extends CommonService {
 			}
 		}
 
-		rsMap.put( "rsList", suggestList00 );
-		rsMap.put( "rsList", suggestList01 );
-		rsMap.put( "rsList", suggestList02 );
-		rsMap.put( "rsList", suggestList03 );
+		rsMap.put( "suggestList00", suggestList00 );
+		rsMap.put( "suggestList01", suggestList01 );
+		rsMap.put( "suggestList02", suggestList02 );
+		rsMap.put( "suggestList03", suggestList03 );
 
 		return rsMap;
 	}
