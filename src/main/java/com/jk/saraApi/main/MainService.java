@@ -191,13 +191,14 @@ public class MainService extends CommonService {
 			suggestBucketGroup = (String) suggestMap.get("suggestBucketGroup");
 			System.out.println("suggestBucketGroup :: " + suggestBucketGroup);
 			if("00".equals(suggestBucketGroup)) {
-				suggestList00.add(rsList.get(i));
+				System.out.println("들어옴!!!!!!!!!!!!!!!!!!!!");
+				suggestList00.add(suggestMap);
 			} else if("01".equals(suggestBucketGroup)) {
-				suggestList01.add(rsList.get(i));
+				suggestList01.add(suggestMap);
 			} else if("02".equals(suggestBucketGroup)) {
-				suggestList02.add(rsList.get(i));
+				suggestList02.add(suggestMap);
 			} else if("03".equals(suggestBucketGroup)) {
-				suggestList03.add(rsList.get(i));
+				suggestList03.add(suggestMap);
 			}
 		}
 
