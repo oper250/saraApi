@@ -173,10 +173,10 @@ public class MainService extends CommonService {
 
 	public Map<String, Object>getSuggestList(Map<String, Object> paramMap) throws Exception {
 		Map<String, Object> rsMap = new HashMap<String, Object>();
-		List<Map<String, Object>> suggestList00 = null;
-		List<Map<String, Object>> suggestList01 = null;
-		List<Map<String, Object>> suggestList02 = null;
-		List<Map<String, Object>> suggestList03 = null;
+		List<Map<String, Object>> suggestList00 = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> suggestList01 = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> suggestList02 = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> suggestList03 = new ArrayList<Map<String, Object>>();
 		String suggestBucketGroup = "";
 
 		System.out.println("11111111111111");
