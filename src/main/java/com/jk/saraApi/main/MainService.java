@@ -184,8 +184,9 @@ public class MainService extends CommonService {
 		System.out.println("rsList.size() : " + rsList.size());
 
 		for (int i =0; i < rsList.size(); i++) {
+			System.out.println("!!!!!");
+			System.out.println("suggestBucketGroup :: " + rsList.get(i));
 			suggestBucketGroup = (String) (rsList.get(i).get("suggestBucketGroup") );
-			System.out.println("suggestBucketGroup :: " + suggestBucketGroup);
 			if("00".equals(suggestBucketGroup)) {
 				suggestList00.add(rsList.get(i));
 			} else if("01".equals(suggestBucketGroup)) {
