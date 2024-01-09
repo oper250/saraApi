@@ -182,8 +182,6 @@ public class MainService extends CommonService {
 		List<Map<String, Object>> rsList = mainDAO.getSuggestList(paramMap);
 
 		for (int i =0; i < rsList.size(); i++) {
-			// Map<String, Object> suggestMap = rsList.get(i);
-			// suggestBucketGroup = (String) suggestMap.get("suggestBucketGroup");
 			suggestBucketGroup = (String) rsList.get(i).get("suggestBucketGroup");
 			if("00".equals(suggestBucketGroup)) {
 				suggestList00.add(rsList.get(i));
