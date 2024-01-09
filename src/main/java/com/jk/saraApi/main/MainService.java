@@ -179,13 +179,13 @@ public class MainService extends CommonService {
 		List<Map<String, Object>> suggestList03 = null;
 		String suggestBucketGroup = "";
 
+		System.out.println("11111111111111");
+
 		List<Map<String, Object>> rsList = mainDAO.getSuggestList(paramMap);
 
 		System.out.println("rsList.size() : " + rsList.size());
 
 		for (int i =0; i < rsList.size(); i++) {
-			System.out.println("!!!!!");
-			System.out.println("suggestBucketGroup :: " + rsList.get(i));
 			suggestBucketGroup = (String) (rsList.get(i).get("suggestBucketGroup") );
 			if("00".equals(suggestBucketGroup)) {
 				suggestList00.add(rsList.get(i));
