@@ -105,8 +105,6 @@ public class MainController extends CommonController {
     public Map<String, Object> getSuggestList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
         Map<String, Object> rsMap = mainService.getSuggestList(paramMap);
 
-        rsMap.put("rsList", rsMap.get("rsList"));
-
         return super.getResponse(rsMap);
     }
 
