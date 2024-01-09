@@ -189,6 +189,7 @@ public class MainService extends CommonService {
 			Map<String, Object> suggestMap = rsList.get(i);
 			System.out.println("suggestMap ::" + suggestMap);
 			suggestBucketGroup = (String) suggestMap.get("suggestBucketGroup");
+			System.out.println("suggestBucketGroup :: " + suggestBucketGroup);
 			if("00".equals(suggestBucketGroup)) {
 				suggestList00.add(rsList.get(i));
 			} else if("01".equals(suggestBucketGroup)) {
