@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -103,7 +104,11 @@ public class MainController extends CommonController {
     @ResponseBody
     @PostMapping( value = "/getSuggestList" )
     public Map<String, Object> getSuggestList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
-        Map<String, Object> rsMap = mainService.getSuggestList(paramMap);
+        Map<String, Object> rsMap = new HashMap<String, Object>();
+
+        Map<String, Object> rsList = mainService.getSuggestList(paramMap);
+
+        rsMap.put("rsList", rsMap.get("rsList"));
 
         return super.getResponse(rsMap);
     }
