@@ -183,7 +183,7 @@ public class MainService extends CommonService {
 
 		for (int i =0; i < rsList.size(); i++) {
 			Map<String, Object> suggestMap = rsList.get(i);
-			suggestBucketGroup = (String) suggestMap.get("SUGGEST_BUCKET_GROUP");
+			suggestBucketGroup = (String) suggestMap.get("suggestBucketGroup");
 
 			if("00".equals(suggestBucketGroup)) {
 				suggestList00.add(suggestMap);
