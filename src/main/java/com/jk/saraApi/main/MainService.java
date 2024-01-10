@@ -179,7 +179,6 @@ public class MainService extends CommonService {
 		List<Map<String, Object>> suggestList03 = new ArrayList<Map<String, Object>>();
 		String suggestBucketGroup = "";
 
-		System.out.println("~~~~~~~~11111");
 		List<Map<String, Object>> rsList = mainDAO.getSuggestList(paramMap);
 
 		for (int i =0; i < rsList.size(); i++) {
@@ -196,8 +195,6 @@ public class MainService extends CommonService {
 				suggestList03.add(suggestMap);
 			}
 		}
-
-		System.out.println("~~~~~~~~222222222");
 
 		rsMap.put( "suggestList00", suggestList00 );
 		rsMap.put( "suggestList01", suggestList01 );
