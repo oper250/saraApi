@@ -191,7 +191,7 @@ public class MainService extends CommonService {
 			} else if("02".equals(suggestBucketGroup)) {
 				suggestList02.add(rsList.get(i));
 			} else if("03".equals(suggestBucketGroup)) {
-				suggestList03.add(rsList.get(i));
+				suggestList03.add(rsList.get(i)) ;
 			}
 		}
 

@@ -108,7 +108,7 @@ public class MainController extends CommonController {
 
         Map<String, Object> rsList = mainService.getSuggestList(paramMap);
 
-        rsMap.put("rsList", rsMap.get("rsList"));
+        rsMap.put("rsList", rsMap.get("rsList")) ;
 
         return super.getResponse(rsMap);
     }
