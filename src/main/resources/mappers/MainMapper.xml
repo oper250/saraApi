@@ -232,4 +232,26 @@
 		  AND A.DEL_YN = 'N'
 	</select>
 
+
+	<insert id="insertBucketFromSuggest" parameterType="JSONObject">
+		INSERT INTO TB_BUCKET_MNG
+		(BUCKET_SEQ,
+		 USER_SEQ,
+		 BUCKET_NM,
+		 BUCKET_DSCR,
+		 REP_IMG_URL,
+		 REG_DTTM,
+		 DEL_YN)
+		SELECT
+			NEXTVAL(SEQ_BUCKET_MNG),
+			#{userSeq},
+			A.SUGGEST_BUCKET_NM,
+			'',
+			A.REP_IMG_URL,
+			NOW(),
+			'N'
+		FROM TB_SUGGEST_BUCKET_MNG A
+		WHERE A.SUGGEST_BUCKET_SEQ = #{suggestBucketSeq}
+	</insert>
+
 </mapper>

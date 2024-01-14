@@ -227,4 +227,14 @@ public class MainService extends CommonService {
 
 		return rsMap;
 	}
+
+	// 추천버킷 담기(SCRAP)
+	public String regBucketFromSuggest(Map<String, Object> paramMap) throws Exception {
+		String[] reqKeys = {"userSeq", "suggestBucketSeq"};					// 필수키
+		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
+
+		mainDAO.insertBucketFromSuggest(paramMap);	// 버킷 등록
+
+		return (String)paramMap.get("bucketSeq");
+	}
 }

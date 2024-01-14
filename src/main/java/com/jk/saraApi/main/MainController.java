@@ -143,4 +143,15 @@ public class MainController extends CommonController {
         return super.getResponse(rsMap);
     }
 
+    @ResponseBody
+    @PostMapping( value = "/regBucketFromSuggest" )
+    public Map<String, Object> regBucketFromSuggest(HttpServletRequest request, @RequestParam Map<String, Object> paramMap) throws Exception {
+        Map<String, Object> rsMap = new HashMap<String, Object>();
+
+        String bucketSeq = mainService.regBucketFromSuggest(paramMap);
+
+        rsMap.put("bucketSeq", bucketSeq);
+
+        return super.getResponse(rsMap);
+    }
 }
