@@ -31,8 +31,8 @@ public class CommonController {
 
 	public JSONObject getErrorResponse( String errCode, String errMsg ) {
 		JSONObject resItem = new JSONObject();
-		resItem.put( "resCode", errCode);
-		resItem.put( "resMsg", errMsg);
+		resItem.put( "rsCode", errCode);
+		resItem.put( "rsMsg", errMsg);
 
 		return resItem;
 	}
