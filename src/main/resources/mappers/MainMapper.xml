@@ -264,7 +264,7 @@
 			REG_DTTM
 	 	) VALUES (
 			#{suggestBucketSeq},
-			(SELECT NVL(MAX(REPLY_NO), 0) + 1 FROM TB_SUGGEST_REPLY WHERE SUGGEST_BUCKET_SEQ = #{suggestBucketSeq}),
+			(SELECT NVL(MAX(A.REPLY_NO), 0) + 1 FROM TB_SUGGEST_REPLY A WHERE A.SUGGEST_BUCKET_SEQ = #{suggestBucketSeq}),
 		  	#{replyContents},
 			#{userSeq},
 			'N',
