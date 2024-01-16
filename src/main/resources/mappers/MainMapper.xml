@@ -263,7 +263,7 @@
 			DEL_YN,
 			REG_DTTM
 	 	) VALUES (
-			SELECT NVL(MAX(REPLY_NO), 0) + 1 FROM TB_SUGGEST_REPLY WHERE SUGGEST_BUCKET_SEQ = #{suggestBucketSeq},
+			(SELECT NVL(MAX(REPLY_NO), 0) + 1 FROM TB_SUGGEST_REPLY WHERE SUGGEST_BUCKET_SEQ = #{suggestBucketSeq}),
 			#{suggestBucketSeq},
 		  	#{replyContents},
 			#{userSeq},
