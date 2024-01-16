@@ -69,7 +69,9 @@ public class MainDAO extends CommonDAO {
 		return sqlSession.insert( "MainMapper.insertBucketFromSuggest", paramMap);
 	}
 
-
+	public int insertSuggestReply(Map<String, Object> paramMap) throws Exception {
+		return sqlSession.insert( "MainMapper.insertSuggestReply", paramMap);
+	}
 
 
 }

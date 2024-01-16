@@ -154,4 +154,14 @@ public class MainController extends CommonController {
 
         return super.getResponse(rsMap);
     }
+
+    @ResponseBody
+    @PostMapping( value = "/regSuggestReply" )
+    public Map<String, Object> regSuggestReply(HttpServletRequest request, @RequestParam Map<String, Object> paramMap) throws Exception {
+        Map<String, Object> rsMap = new HashMap<String, Object>();
+
+        int rsCnt = mainService.regSuggestReply(paramMap);
+
+        return super.getResponse(rsMap);
+    }
 }
