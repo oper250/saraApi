@@ -73,5 +73,9 @@ public class MainDAO extends CommonDAO {
 		return sqlSession.insert( "MainMapper.insertSuggestReply", paramMap);
 	}
 
+	public List<Map<String, Object>> selectSuggestReplyList(Map<String, Object> paramMap) throws Exception {
+		return sqlSession.selectList("MainMapper.selectSuggestReplyList", paramMap);
+	}
+
 
 }

@@ -126,11 +126,8 @@ public class MainController extends CommonController {
 
     @ResponseBody
     @PostMapping( value = "/getUserInfo" )
-    // 추천 버킷리스트 등록 (관리자용)
     public Map<String, Object> getUserInfo(HttpServletRequest request, @RequestBody Map<String, Object> paramMap) throws Exception {
         Map<String, Object> rsMap = mainService.getUserInfo(paramMap);
-        System.out.println("!!!!!!!");
-        System.out.println(rsMap);
 
         return super.getResponse(rsMap);
     }
@@ -161,6 +158,17 @@ public class MainController extends CommonController {
         Map<String, Object> rsMap = new HashMap<String, Object>();
 
         int rsCnt = mainService.regSuggestReply(paramMap);
+
+        return super.getResponse(rsMap);
+    }
+
+    @ResponseBody
+    @PostMapping( value = "/getSuggestReplyList" )
+    public Map<String, Object> getSuggestReplyList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
+        log.info(">>> parameter" + paramMap.get("searchText"));
+        Map<String, Object> rsMap = mainService.getSuggestReplyList(paramMap);
+
+        rsMap.put("rsList", rsMap.get("rsList"));
 
         return super.getResponse(rsMap);
     }

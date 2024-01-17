@@ -272,6 +272,24 @@
 	 	);
 	</insert>
 
+	<select id="selectSuggestReplyList" parameterType="JSONObject" resultType="CamelJSONObject">
+		SELECT
+		    A.REPLY_NO,
+		    A.USER_SEQ,
+		    A.REPLY_CONTENTS,
+		    B.NICKNAME,
+		    A.REG_DTTM,
+			ROW_NUMBER() OVER(ORDER BY REPLY_NO DESC) AS RN,
+			(CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y'
+					ELSE 'N'
+			END) AS MORE_YN
+		FROM TB_SUGGEST_REPLY A
+				 LEFT JOIN TB_USER_MNG B
+						   ON A.USER_SEQ = B.USER_SEQ
+		WHERE A.DEL_YN = 'N'
+		  AND SUGGEST_BUCKET_SEQ = #{suggestBucketSeq}
+	</select>
+
 
 
 </mapper>

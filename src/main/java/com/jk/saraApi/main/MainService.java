@@ -29,6 +29,7 @@ public class MainService extends CommonService {
 	private static final int GET_BUCKET_ITEMS_SEARCH_COUNT = 30;		// 버킷리스트 조회건수
 	private static final int GET_STORY_ITEMS_SEARCH_COUNT = 30;			// 스토리리스트 조회건수
 	private static final int GET_USER_ITEMS_SEARCH_COUNT = 30;			// 사용자리스트 조회건수
+	private static final int GET_SUGGEST_REPLY_COUNT = 30;				// 추천버킷리플 조회건수
 
 	/* 로그인 */
 	public String login(Map<String, Object> paramMap) throws Exception {
@@ -104,7 +105,6 @@ public class MainService extends CommonService {
 	}
 
 	public Map<String, Object> getStoryList(Map<String, Object> paramMap) throws Exception {
-		System.out.println("!!!!!!!!!!!!!" + paramMap);
 		String[] reqKeys = {"stNo", "bucketSeq"};		// 필수키
 		super.checkVal(paramMap, reqKeys);
 
@@ -243,5 +243,32 @@ public class MainService extends CommonService {
 		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
 
 		return mainDAO.insertSuggestReply(paramMap);	// 버킷 등록
+	}
+
+	public Map<String, Object>getSuggestReplyList(Map<String, Object> paramMap) throws Exception {
+		String[] reqKeys = {"stNo", "suggestBucketSeq"};		// 필수키
+		super.checkVal(paramMap, reqKeys);
+
+		Map<String, Object> rsMap = new HashMap<String, Object>();
+
+		String moreYn = "";		// 더보기여부
+		int nextStNo = 0;
+
+		paramMap.put("searchCnt", GET_SUGGEST_REPLY_COUNT);
+
+		List<Map<String, Object>> rsList = mainDAO.selectSuggestReplyList(paramMap);
+
+		if( !CommonUtil.isEmptyList(rsList) ) {
+			moreYn = (String) rsList.get(0).get("moreYn");		// 더보기여부 SET
+			nextStNo = (Integer) paramMap.get("stNo") + GET_SUGGEST_REPLY_COUNT;
+		} else {
+			moreYn = "N";
+		}
+
+		rsMap.put( "rsList", rsList );
+		rsMap.put( "moreYn", moreYn );
+		rsMap.put( "nextStNo", nextStNo );
+
+		return rsMap;
 	}
 }
