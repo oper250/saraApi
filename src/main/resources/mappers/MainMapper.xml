@@ -277,8 +277,9 @@
 		    A.REPLY_NO,
 		    A.USER_SEQ,
 		    A.REPLY_CONTENTS,
+			A.REG_DTTM,
 		    B.NICKNAME,
-		    A.REG_DTTM,
+		    B.PROFILE_URL,
 			ROW_NUMBER() OVER(ORDER BY REPLY_NO DESC) AS RN,
 			(CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y'
 					ELSE 'N'
