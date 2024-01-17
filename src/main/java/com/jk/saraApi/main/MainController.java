@@ -165,7 +165,6 @@ public class MainController extends CommonController {
     @ResponseBody
     @PostMapping( value = "/getSuggestReplyList" )
     public Map<String, Object> getSuggestReplyList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
-        log.info(">>> parameter" + paramMap.get("searchText"));
         Map<String, Object> rsMap = mainService.getSuggestReplyList(paramMap);
 
         rsMap.put("rsList", rsMap.get("rsList"));
