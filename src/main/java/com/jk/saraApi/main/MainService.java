@@ -52,7 +52,10 @@ public class MainService extends CommonService {
 	public Map<String, Object> getRandomImgList() throws Exception {
 		Map<String, Object> rsMap = new HashMap<String, Object>();
 
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!");
 		List<Map<String, Object>> rsList = mainDAO.selectRandomImgList();
+
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + rsList);
 
 		rsMap.put( "rsList", rsList );
 
