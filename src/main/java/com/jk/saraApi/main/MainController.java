@@ -185,7 +185,9 @@ public class MainController extends CommonController {
     @ResponseBody
     @PostMapping( value = "/getRandomImgList" )
     public Map<String, Object> getRandomImgList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
+        System.out.println("!!!!!!!진입!!!!!!!!!!");
         Map<String, Object> rsMap = mainService.getRandomImgList();
+        System.out.println("!!고장~~~~~~!!!!!!!!!!");
 
         rsMap.put("rsList", rsMap.get("rsList"));
 
