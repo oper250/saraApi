@@ -171,4 +171,14 @@ public class MainController extends CommonController {
 
         return super.getResponse(rsMap);
     }
+
+    @ResponseBody
+    @PostMapping( value = "/deleteSuggestReply" )
+    public Map<String, Object> deleteSuggestReply(HttpServletRequest request, @RequestParam Map<String, Object> paramMap) throws Exception {
+        Map<String, Object> rsMap = new HashMap<String, Object>();
+
+        int rsCnt = mainService.deleteSuggestReply(paramMap);
+
+        return super.getResponse(rsMap);
+    }
 }

@@ -292,6 +292,10 @@
 		ORDER BY RN
 	</select>
 
-
+	<delete id="deleteSuggestReply" parameterType="JSONObject">
+		DELETE FROM TB_SUGGEST_REPLY
+		WHERE SUGGEST_BUCKET_SEQ = #{suggestBucketSeq}
+		AND REPLY_NO = #{replyNo}
+	</delete>
 
 </mapper>
