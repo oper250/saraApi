@@ -181,4 +181,14 @@ public class MainController extends CommonController {
 
         return super.getResponse(rsMap);
     }
+
+    @ResponseBody
+    @PostMapping( value = "/selectRandomImgList" )
+    public Map<String, Object> selectRandomImgList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
+        Map<String, Object> rsMap = mainService.getSuggestReplyList(paramMap);
+
+        rsMap.put("rsList", rsMap.get("rsList"));
+
+        return super.getResponse(rsMap);
+    }
 }

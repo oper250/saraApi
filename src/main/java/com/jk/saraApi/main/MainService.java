@@ -49,6 +49,16 @@ public class MainService extends CommonService {
 		return userSeq;
 	}
 
+	public Map<String, Object> getRandomImgList() throws Exception {
+		Map<String, Object> rsMap = new HashMap<String, Object>();
+
+		List<Map<String, Object>> rsList = mainDAO.selectRandomImgList();
+
+		rsMap.put( "rsList", rsList );
+
+		return rsMap;
+	}
+
 	public Map<String, Object> getBucketList(Map<String, Object> paramMap) throws Exception {
 		String[] reqKeys = {"stNo"};		// 필수키
 		super.checkVal(paramMap, reqKeys);
@@ -116,8 +126,6 @@ public class MainService extends CommonService {
 
 		// 버킷 목록 조회
 		List<Map<String, Object>> storyList = mainDAO.selectStoryList(paramMap);
-
-		System.out.println("~~~~~~~~~~~~~~~~" + storyList);
 
 		if( !CommonUtil.isEmptyList(storyList) ) {
 			moreYn = (String) storyList.get(0).get("moreYn");		// 더보기여부 SET

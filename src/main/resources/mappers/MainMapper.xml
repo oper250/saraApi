@@ -103,6 +103,13 @@
 		LIMIT  #{stNo}, #{searchCnt}
 	</select>
 
+	<select id="selectRandomImgList" resultType="CamelJSONObject">
+		SELECT
+		    ROW_NUMBER() OVER(ORDER BY SUGGEST_BUCKET_SEQ DESC) AS RN,
+			REP_IMG_URL
+		FROM TB_SUGGEST_BUCKET_MNG
+	</select>
+
 	<select id="selectSuggestList" parameterType="JSONObject" resultType="CamelJSONObject">
 		SELECT SUGGEST_BUCKET_SEQ,
 			   SUGGEST_BUCKET_GROUP,

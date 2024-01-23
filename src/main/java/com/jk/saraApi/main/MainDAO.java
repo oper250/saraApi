@@ -81,4 +81,8 @@ public class MainDAO extends CommonDAO {
 		return sqlSession.delete("MainMapper.deleteSuggestReply", paramMap);
 	}
 
+	public List<Map<String, Object>> selectRandomImgList() throws Exception {
+		return sqlSession.selectList("MainMapper.selectRandomImgList");
+	}
+
 }
