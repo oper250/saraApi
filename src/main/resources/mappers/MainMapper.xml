@@ -303,7 +303,6 @@
 		SELECT COUNT(*) AS CNT
 		FROM TB_SUGGEST_REPLY
 		WHERE SUGGEST_BUCKET_SEQ = #{suggestBucketSeq}
-		  AND REPLY_NO = #{replyNo}
 	</select>
 
 	<delete id="deleteSuggestReply" parameterType="JSONObject">
