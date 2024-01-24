@@ -187,6 +187,23 @@
 				'N')
 	</insert>
 
+	<insert id="insertStory" parameterType="JSONObject">
+		INSERT INTO TB_STORY_MNG
+				(STORY_SEQ,
+				 BUCKET_SEQ,
+				 STORY_CONTENTS,
+				 IMG_URL,
+				 REG_DTTM,
+				 DEL_YN
+		VALUES(
+				(SELECT NVL(MAX(A.STORY_SEQ + 1), 0) FROM TB_STORY_MNG A WHERE A.BUCKET_SEQ = #{bucketSeq}),
+				#{bucketSeq},
+				#{storyContents},
+				#{imgUrl},
+				NOW(),
+				'N');
+	</insert>
+
 	<insert id="insertSuggestBucket" parameterType="JSONObject">
 		INSERT INTO TB_SUGGEST_BUCKET_MNG
 				(SUGGEST_BUCKET_SEQ,

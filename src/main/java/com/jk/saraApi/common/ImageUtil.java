@@ -30,7 +30,7 @@ public class ImageUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	public String uplaodBucketRepImage(MultipartFile file) throws Exception {
+	public String uploadBucketRepImage(MultipartFile file) throws Exception {
 		if( file.getSize() > imgMaxSize ) {
 			throw new CommonException( "1001", "업로드 파일의 용량이 초과되었습니다. [Max 10Mb]" );
 		}
@@ -64,7 +64,7 @@ public class ImageUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	public String uplaodBucketStoryImage( MultipartFile file ) throws Exception {
+	public String uploadStoryImage( MultipartFile file ) throws Exception {
 		if( file.getSize() > imgMaxSize ) {
 			throw new CommonException( "1001", "업로드 파일의 용량이 초과되었습니다. [Max 10Mb]" );
 		}

@@ -102,7 +102,7 @@ public class MainService extends CommonService {
 
 		// 파일업로드 및 업로드경로 SET
 		if ( file != null && !file.isEmpty() ){
-			paramMap.put("repImgUrl", imageUtil.uplaodBucketRepImage(file));
+			paramMap.put("repImgUrl", imageUtil.uploadBucketRepImage(file));
 			log.info(":::파일 업로드 완료:::");
 		}
 
@@ -110,6 +110,21 @@ public class MainService extends CommonService {
 		log.info(":::버킷 등록 완료::: bucketSeq : " + (String)paramMap.get("bucketSeq") + ")");
 
 		return (String)paramMap.get("bucketSeq");
+	}
+
+	public void regStory(Map<String, Object> paramMap, MultipartFile file) throws Exception {
+		String[] reqKeys = {"bucketSeq", "storyContents"};					// 필수키
+		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
+
+		// 파일업로드 및 업로드경로 SET
+		if ( file != null && !file.isEmpty() ){
+			paramMap.put("imgUrl", imageUtil.uploadStoryImage(file));
+			log.info(":::파일 업로드 완료:::");
+		}
+
+		mainDAO.insertStory(paramMap);	// 버킷 등록
+
+		return;
 	}
 
 	public Map<String, Object> getStoryList(Map<String, Object> paramMap) throws Exception {
@@ -213,7 +228,7 @@ public class MainService extends CommonService {
 	public String regSuggestBucket(Map<String, Object> paramMap, MultipartFile file) throws Exception {
 		// 파일업로드 및 업로드경로 SET
 		if ( file != null && !file.isEmpty() ){
-			paramMap.put("repImgUrl", imageUtil.uplaodBucketRepImage(file));
+			paramMap.put("repImgUrl", imageUtil.uploadBucketRepImage(file));
 			log.info(":::파일 업로드 완료:::");
 		}
 
