@@ -194,7 +194,7 @@
 				 STORY_CONTENTS,
 				 IMG_URL,
 				 REG_DTTM,
-				 DEL_YN
+				 DEL_YN)
 		VALUES(
 				(SELECT NVL(MAX(A.STORY_SEQ + 1), 0) FROM TB_STORY_MNG A WHERE A.BUCKET_SEQ = #{bucketSeq}),
 				#{bucketSeq},
