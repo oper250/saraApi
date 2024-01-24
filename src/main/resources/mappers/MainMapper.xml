@@ -299,6 +299,13 @@
 		ORDER BY RN
 	</select>
 
+	<select id="selectSuggestReplyCnt" parameterType="JSONObject" resultType="CamelJSONObject">
+		SELECT COUNT(*) AS CNT
+		FROM TB_SUGGEST_REPLY
+		WHERE SUGGEST_BUCKET_SEQ = #{suggestBucketSeq}
+		  AND REPLY_NO = #{replyNo}
+	</select>
+
 	<delete id="deleteSuggestReply" parameterType="JSONObject">
 		DELETE FROM TB_SUGGEST_REPLY
 		WHERE SUGGEST_BUCKET_SEQ = #{suggestBucketSeq}

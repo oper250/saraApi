@@ -191,4 +191,13 @@ public class MainController extends CommonController {
 
         return super.getResponse(rsMap);
     }
+
+    @ResponseBody
+    @PostMapping( value = "/getSuggestReplyCnt" )
+    public Map<String, Object> getSuggestReplyCnt(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
+        Map<String, Object> rsMap = mainService.getSuggestReplyCnt(paramMap);
+
+        return super.getResponse(rsMap);
+    }
+
 }

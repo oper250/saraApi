@@ -85,4 +85,9 @@ public class MainDAO extends CommonDAO {
 		return sqlSession.selectList("MainMapper.selectRandomImgList");
 	}
 
+	// 추천버킷 댓글 건수 구하기
+	public Map<String, Object> selectSuggestReplyCnt(Map<String, Object> paramMap) throws Exception {
+		return sqlSession.selectOne("MainMapper.selectSuggestReplyCnt", paramMap);
+	}
+
 }
