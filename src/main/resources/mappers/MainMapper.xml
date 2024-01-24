@@ -219,21 +219,6 @@
 			   #{repImgUrl})
 	</insert>
 
-
-	<insert id="insertStory" parameterType="JSONObject" useGeneratedKeys="true" keyProperty="bucketStorySeqno">
-		INSERT INTO TB_STORY_MNG
-		            (BUCKET_SEQNO,
-		             SOTRY_DSCR,
-		             IMG_URL,
-		             REG_DTTM,
-		             DEL_YN)
-		VALUES     (#{bucketSeqno},
-		            #{storyDscr},
-		            #{imgUrl},
-		            now(),
-		            'N');
-	</insert>
-
 	<update id="delBucket" parameterType="JSONObject">
 	/*[ SQL ID : BucketMapper.delStory]*/
 		UPDATE TB_BUCKET_MNG
