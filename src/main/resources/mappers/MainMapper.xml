@@ -256,7 +256,7 @@
 		        ON A.USER_SEQ = B.USER_SEQ
 		LEFT JOIN TB_BOOKMARK C
 				ON A.BUCKET_SEQ = C.BUCKET_SEQ
-			   AND B.USER_SEQ = B.USER_SEQ
+			   AND B.USER_SEQ = C.USER_SEQ
 		WHERE A.BUCKET_SEQ = #{bucketSeq}
 		  AND A.DEL_YN = 'N'
 	</select>
