@@ -172,6 +172,17 @@ public class MainController extends CommonController {
         return super.getResponse(rsMap);
     }
 
+    // 버킷리스트 즐겨찾기 추가
+    @ResponseBody
+    @PostMapping( value = "/regBookmark" )
+    public Map<String, Object> regBookmark(HttpServletRequest request, @RequestParam Map<String, Object> paramMap) throws Exception {
+        Map<String, Object> rsMap = new HashMap<String, Object>();
+
+        int rsCnt = mainService.regBookmark(paramMap);
+
+        return super.getResponse(rsMap);
+    }
+
     @ResponseBody
     @PostMapping( value = "/getSuggestReplyList" )
     public Map<String, Object> getSuggestReplyList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {

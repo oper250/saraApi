@@ -288,6 +288,19 @@
 	 	);
 	</insert>
 
+	<insert id="insertBookmark" parameterType="JSONObject">
+		INSERT INTO TB_BOOKMARK (
+			USER_SEQ,
+		 	BUCKET_SEQ,
+		 	REG_DTTM
+		) VALUES (
+			#{userSeq},
+			#{bucketSeq},
+			NOW())
+	</insert>
+
+
+
 	<select id="selectSuggestReplyList" parameterType="JSONObject" resultType="CamelJSONObject">
 		SELECT
 		    A.REPLY_NO,
