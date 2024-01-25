@@ -72,7 +72,7 @@
 						   ON A.BUCKET_SEQ = B.BUCKET_SEQ
 				 LEFT JOIN TB_USER_MNG C
 						   ON B.USER_SEQ = C.USER_SEQ
-		WHERE BUCKET_SEQ = #{bucketSeq}
+		WHERE A.BUCKET_SEQ = #{bucketSeq}
 		LIMIT  #{stNo}, #{searchCnt}
 	</select>
 
