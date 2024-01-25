@@ -56,15 +56,22 @@
 	</select>
 
 	<select id="selectStoryList" parameterType="JSONObject" resultType="CamelJSONObject">
-		SELECT ROW_NUMBER() OVER(ORDER BY STORY_SEQ DESC) AS RN, STORY_SEQ,
-		       STORY_SEQ,
-			   BUCKET_SEQ,
-			   STORY_CONTENTS,
-			   IMG_URL,
-			   REG_DTTM,
-			   DEL_YN,
-			   (CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y' ELSE 'N' END) AS MORE_YN
-		FROM TB_STORY_MNG
+		SELECT
+		    ROW_NUMBER() OVER(ORDER BY A.STORY_SEQ DESC) AS RN,
+			A.STORY_SEQ,
+			A.STORY_SEQ,
+			A.BUCKET_SEQ,
+			A.STORY_CONTENTS,
+			A.IMG_URL,
+			A.REG_DTTM,
+			A.DEL_YN,
+			CONCAT(C.USER_ID, '@', C.NICKNAME) AS FULL_NAME,
+			(CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y' ELSE 'N' END) AS MORE_YN
+		FROM TB_STORY_MNG A
+				 LEFT JOIN TB_BUCKET_MNG B
+						   ON A.BUCKET_SEQ = B.BUCKET_SEQ
+				 LEFT JOIN TB_USER_MNG C
+						   ON B.USER_SEQ = C.USER_SEQ
 		WHERE BUCKET_SEQ = #{bucketSeq}
 		LIMIT  #{stNo}, #{searchCnt}
 	</select>
