@@ -312,6 +312,12 @@
 			NOW())
 	</insert>
 
+	<delete id="deleteBookmark" parameterType="JSONObject">
+		DELETE FROM TB_BOOKMARK
+		WHERE USER_SEQ = #{userSeq}
+		  AND BUCKET_SEQ = #{bucketSeq}
+	</delete>
+
 
 
 	<select id="selectSuggestReplyList" parameterType="JSONObject" resultType="CamelJSONObject">

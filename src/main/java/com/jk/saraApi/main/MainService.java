@@ -30,6 +30,8 @@ public class MainService extends CommonService {
 	private static final int GET_STORY_ITEMS_SEARCH_COUNT = 30;			// 스토리리스트 조회건수
 	private static final int GET_USER_ITEMS_SEARCH_COUNT = 30;			// 사용자리스트 조회건수
 	private static final int GET_SUGGEST_REPLY_COUNT = 30;				// 추천버킷리플 조회건수
+	private static final String UPDATE_TYPE_INSERT = "I";				// 업데이트 타입(I: insert)
+	private static final String UPDATE_TYPE_DELETE = "D";				// 업데이트 타입(I: insert)
 
 	/* 로그인 */
 	public String login(Map<String, Object> paramMap) throws Exception {
@@ -266,11 +268,20 @@ public class MainService extends CommonService {
 		return mainDAO.insertSuggestReply(paramMap);	// 버킷 등록
 	}
 
-	public int regBookmark(Map<String, Object> paramMap) throws Exception {
+	public int saveBookmark(Map<String, Object> paramMap) throws Exception {
 		String[] reqKeys = {"userSeq", "bucketSeq"};					// 필수키
-		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
+		super.checkVal(paramMap, reqKeys);								// 벨리데이션 체크
 
-		return mainDAO.insertBookmark(paramMap);	// 버킷 등록
+		int rs = 0;
+		String updateType = (String)paramMap.get("updateType");
+
+		if(UPDATE_TYPE_INSERT.equals(updateType)) {
+			rs = mainDAO.insertBookmark(paramMap);
+		} else if (UPDATE_TYPE_DELETE.equals(updateType)) {
+			rs = mainDAO.deleteBookmark(paramMap);
+		}
+
+		return rs;	// 버킷 등록
 	}
 
 	public Map<String, Object>getSuggestReplyList(Map<String, Object> paramMap) throws Exception {
