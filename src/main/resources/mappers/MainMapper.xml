@@ -60,7 +60,7 @@
 				ON A.BUCKET_SEQ = B.BUCKET_SEQ
 		WHERE A.DEL_YN = 'N'
 		  AND A.USER_SEQ = #{userSeq}
-		ORDER BY BUCKET_SEQ DESC
+		ORDER BY B.REG_DTTM DESC
 		LIMIT  #{stNo}, #{searchCnt}
 	</select>
 
