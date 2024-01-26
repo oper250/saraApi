@@ -97,12 +97,6 @@
 		INNER JOIN TB_USER_MNG B
 				ON A.USER_SEQ = B.USER_SEQ
 		WHERE A.USER_SEQ = #{userSeq}
-		<if test="alarmGubun == 01">
-		  AND SEND_USER_SEQ IS NULL
-		</if>
-		<if test="alarmGubun == 02">
-			AND SEND_USER_SEQ IS NOT NULL
-		</if>
 		  AND A.ALARM_GUBUN = #{alarmGubun}
 		  AND A.REG_DTTM >= B.REG_DTTM
 		ORDER BY A.REG_DTTM DESC
