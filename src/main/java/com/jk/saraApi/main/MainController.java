@@ -56,6 +56,20 @@ public class MainController extends CommonController {
     }
 
     @ResponseBody
+    @PostMapping( value = "/getBookmarkList" )
+    public Map<String, Object> getBookmarkList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
+        Map<String, Object> rsMap;
+
+        rsMap = mainService.getBookmarkList(paramMap);
+
+        rsMap.put("rsList", rsMap.get("rsList"));
+        rsMap.put("moreYn", rsMap.get("moreYn"));
+        rsMap.put("nextStNo", rsMap.get("nextStNo"));
+
+        return super.getResponse(rsMap);
+    }
+
+    @ResponseBody
     @PostMapping( value = "/regBucket" )
     public Map<String, Object> regBucket(HttpServletRequest request, @RequestParam( required=false, value="file" ) MultipartFile file, @RequestParam Map<String, Object> paramMap) throws Exception {
         Map<String, Object> rsMap = new HashMap<String, Object>();
