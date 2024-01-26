@@ -19,12 +19,6 @@
 			) T1
 	</select>
 
-	<select id="selectBookmarkList" parameterType="hashMap" resultType="CamelJSONObject">
-		SELECT GROUP_CONCAT(BOOKMARK_NO, '') AS bookmarkNo
-		FROM TB_BOOKMARK_MNG A
-		WHERE A.USER_SEQ = #{userSeq}
-	</select>
-
 	<select id="selectBucketList" parameterType="hashMap" resultType="CamelJSONObject">
 		SELECT ROW_NUMBER() OVER(ORDER BY BUCKET_SEQ DESC) AS RN,
 		       BUCKET_SEQ,
