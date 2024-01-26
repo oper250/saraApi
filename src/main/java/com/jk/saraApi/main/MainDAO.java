@@ -14,14 +14,14 @@ public class MainDAO extends CommonDAO {
 		return sqlSession.selectOne( "MainMapper.login", paramMap );
 	}
 
-	// 즐겨찾기 리스트
-	public Map<String, Object> selectBookmarkList(Map<String, Object> paramMap) throws Exception {
-		return sqlSession.selectOne("MainMapper.selectBookmarkList", paramMap);
-	}
-
 	// 버킷리스트 조회
 	public List<Map<String, Object>> selectBucketList(Map<String, Object> paramMap) throws Exception {
 		return sqlSession.selectList("MainMapper.selectBucketList", paramMap);
+	}
+
+	// 즐겨찾기 조회
+	public List<Map<String, Object>> selectBookmarkList(Map<String, Object> paramMap) throws Exception {
+		return sqlSession.selectList("MainMapper.selectBookmarkList", paramMap);
 	}
 
 	/* 버킷 등록 */

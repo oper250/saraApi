@@ -42,15 +42,30 @@
 		<if test="searchGubun == 'mine'">
 			AND USER_SEQ = #{userSeq}
 		</if>
-		<if test="searchGubun == 'bookmark'">
-			AND BUCKET_SEQ IN
-			<foreach collection="bookmarkNo" item="arr" open="(" separator="," close=")">
-				#{arr}
-			</foreach>
-		</if>
 		<if test="searchGubun == 'searchBucket'">
 			AND BUCKET_NM LIKE CONCAT('%',#{searchText},'%')
 		</if>
+		ORDER BY BUCKET_SEQ DESC
+		LIMIT  #{stNo}, #{searchCnt}
+	</select>
+
+	<select id="selectBookmarkList" parameterType="hashMap" resultType="CamelJSONObject">
+		SELECT ROW_NUMBER() OVER(ORDER BY A.BUCKET_SEQ DESC) AS RN,
+			A.BUCKET_SEQ,
+			A.USER_SEQ,
+			A.BUCKET_NM,
+			A.BUCKET_DSCR,
+			A.REP_IMG_URL,
+			A.REG_DTTM,
+			A.DEL_YN,
+			(CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y'
+				  ELSE 'N'
+			END) AS MORE_YN
+		FROM   TB_BUCKET_MNG A
+		INNER JOIN TB_BOOKMARK B
+				ON A.BUCKET_SEQ = B.BUCKET_SEQ
+		WHERE A.DEL_YN = 'N'
+		  AND A.USER_SEQ = #{userSeq}
 		ORDER BY BUCKET_SEQ DESC
 		LIMIT  #{stNo}, #{searchCnt}
 	</select>

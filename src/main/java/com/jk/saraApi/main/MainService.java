@@ -64,24 +64,40 @@ public class MainService extends CommonService {
 		super.checkVal(paramMap, reqKeys);
 
 		Map<String, Object> rsMap = new HashMap<String, Object>();
-		String searchGubun = (String)paramMap.get("searchGubun");
 		List<Map<String, Object>> bucketList = new ArrayList<Map<String, Object>>();
-
 		String moreYn = "";		// 더보기여부
 		int nextStNo = 0;
 
 		paramMap.put("searchCnt", GET_BUCKET_ITEMS_SEARCH_COUNT);
 
-		if ("bookmark".equals(paramMap.get("searchGubun"))) {
-			Map<String, Object> bookmarkList = mainDAO.selectBookmarkList(paramMap);
+		bucketList = mainDAO.selectBucketList(paramMap);
 
-			if ( bookmarkList != null ) {
-				paramMap.put("bookmarkNo", bookmarkList.get("bookmarkno").toString().split(","));
-				bucketList = mainDAO.selectBucketList(paramMap);
-			}
+		if( !CommonUtil.isEmptyList(bucketList) ) {
+			moreYn = (String) bucketList.get(0).get("moreYn");		// 더보기여부 SET
+			nextStNo = (Integer) paramMap.get("stNo") + GET_BUCKET_ITEMS_SEARCH_COUNT;
 		} else {
-			bucketList = mainDAO.selectBucketList(paramMap);
+			moreYn = "N";
 		}
+
+		rsMap.put( "rsList", bucketList );
+		rsMap.put( "moreYn", moreYn );
+		rsMap.put( "nextStNo", nextStNo );
+
+		return rsMap;
+	}
+
+	public Map<String, Object> getBookmarkList(Map<String, Object> paramMap) throws Exception {
+		String[] reqKeys = {"stNo"};		// 필수키
+		super.checkVal(paramMap, reqKeys);
+
+		Map<String, Object> rsMap = new HashMap<String, Object>();
+		List<Map<String, Object>> bucketList = new ArrayList<Map<String, Object>>();
+		String moreYn = "";		// 더보기여부
+		int nextStNo = 0;
+
+		paramMap.put("searchCnt", GET_BUCKET_ITEMS_SEARCH_COUNT);
+
+		bucketList = mainDAO.selectBookmarkList(paramMap);
 
 		if( !CommonUtil.isEmptyList(bucketList) ) {
 			moreYn = (String) bucketList.get(0).get("moreYn");		// 더보기여부 SET
