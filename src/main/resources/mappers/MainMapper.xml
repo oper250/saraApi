@@ -97,9 +97,13 @@
 		FROM TB_ALARM_MNG A
 		LEFT JOIN TB_USER_MNG B
 				ON A.SEND_USER_SEQ = B.USER_SEQ
-		WHERE A.USER_SEQ = #{userSeq}
-		  AND A.ALARM_GUBUN = #{alarmGubun}
-		  AND A.REG_DTTM >= B.REG_DTTM
+		WHERE A.ALARM_GUBUN = #{alarmGubun}
+		<if test="alarmGubun == '01'">
+			AND (A.USER_SEQ = #{userSeq} OR A.USER_SEQ IS NULL)
+		</if>
+		<if test="alarmGubun == '02'">
+			AND A.USER_SEQ = #{userSeq}
+		</if>
 		ORDER BY A.REG_DTTM DESC
 	</select>
 
