@@ -107,6 +107,12 @@
 		ORDER BY A.REG_DTTM DESC
 	</select>
 
+	<insert id="insertAlarm" parameterType="JSONObject">
+		INSERT INTO TB_ALARM_MNG
+		(ALARM_GUBUN, ALARM_NO, ALARM_CONTENTS, USER_SEQ, SEND_USER_SEQ, REG_DTTM)
+		VALUES(#{alarmGubun}, NEXTVAL(SEQ_ALARM_MNG), #{alarmContents}, #{userSeq}, #{sendUserSeq}, NOW());
+	</insert>
+
 	<select id="selectUserList" parameterType="JSONObject" resultType="CamelJSONObject">
 		SELECT USER_SEQ,
 		       USER_ID,

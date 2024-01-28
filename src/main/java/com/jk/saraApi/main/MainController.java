@@ -82,6 +82,16 @@ public class MainController extends CommonController {
     }
 
     @ResponseBody
+    @PostMapping( value = "/regAlarm" )
+    public Map<String, Object> regAlarm(HttpServletRequest request, @RequestParam( required=false, value="file" ) MultipartFile file, @RequestParam Map<String, Object> paramMap) throws Exception {
+        Map<String, Object> rsMap = new HashMap<String, Object>();
+
+        mainService.regAlarm(paramMap);
+
+        return super.getResponse(rsMap);
+    }
+
+    @ResponseBody
     @PostMapping( value = "/regStory" )
     public Map<String, Object> regStory(HttpServletRequest request, @RequestParam( required=false, value="file" ) MultipartFile file, @RequestParam Map<String, Object> paramMap) throws Exception {
         Map<String, Object> rsMap = new HashMap<String, Object>();

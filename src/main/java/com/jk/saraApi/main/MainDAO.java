@@ -29,6 +29,11 @@ public class MainDAO extends CommonDAO {
 		return sqlSession.insert( "MainMapper.insertBucket", paramMap);
 	}
 
+	public int insertAlarm(Map<String, Object> paramMap) throws Exception {
+		return sqlSession.insert( "MainMapper.insertAlarm", paramMap);
+	}
+
+
 	public int insertStory(Map<String, Object> paramMap) throws Exception {
 		return sqlSession.insert( "MainMapper.insertStory", paramMap);
 	}
