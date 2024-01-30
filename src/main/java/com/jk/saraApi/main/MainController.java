@@ -245,4 +245,14 @@ public class MainController extends CommonController {
         return super.getResponse(rsMap);
     }
 
+    @ResponseBody
+    @PostMapping( value = "/saveUserInfo" )
+    public Map<String, Object> saveUserInfo(HttpServletRequest request, @RequestParam( required=false, value="file" ) MultipartFile file, @RequestParam Map<String, Object> paramMap) throws Exception {
+        Map<String, Object> rsMap = new HashMap<String, Object>();
+
+        mainService.saveUserInfo(paramMap);
+
+        return super.getResponse(rsMap);
+    }
+
 }

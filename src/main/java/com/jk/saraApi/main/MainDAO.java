@@ -33,7 +33,6 @@ public class MainDAO extends CommonDAO {
 		return sqlSession.insert( "MainMapper.insertAlarm", paramMap);
 	}
 
-
 	public int insertStory(Map<String, Object> paramMap) throws Exception {
 		return sqlSession.insert( "MainMapper.insertStory", paramMap);
 	}
@@ -105,6 +104,10 @@ public class MainDAO extends CommonDAO {
 	// 추천버킷 댓글 건수 구하기
 	public Map<String, Object> selectSuggestReplyCnt(Map<String, Object> paramMap) throws Exception {
 		return sqlSession.selectOne("MainMapper.selectSuggestReplyCnt", paramMap);
+	}
+
+	public int updateUserInfo(Map<String, Object> paramMap) throws Exception {
+		return sqlSession.delete("MainMapper.updateUserInfo", paramMap);
 	}
 
 }

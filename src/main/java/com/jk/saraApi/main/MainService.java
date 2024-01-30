@@ -347,4 +347,19 @@ public class MainService extends CommonService {
 
 		return mainDAO.selectSuggestReplyCnt(paramMap);	// 버킷 등록
 	}
+
+	public void saveUserInfo(Map<String, Object> paramMap, MultipartFile file) throws Exception {
+		String[] reqKeys = {"userSeq"};					// 필수키
+		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
+
+		// 파일업로드 및 업로드경로 SET
+		if ( file != null && !file.isEmpty() ){
+			paramMap.put("repImgUrl", imageUtil.uploadBucketRepImage(file));
+			log.info(":::파일 업로드 완료:::");
+		}
+
+		mainDAO.updateUserInfo(paramMap);	// 사용자정보 수정
+
+		return;
+	}
 }

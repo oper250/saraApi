@@ -247,7 +247,6 @@
 	</insert>
 
 	<update id="delBucket" parameterType="JSONObject">
-	/*[ SQL ID : BucketMapper.delStory]*/
 		UPDATE TB_BUCKET_MNG
 		   SET DEL_YN = 'Y'
 		 WHERE BUCKET_SEQNO = #{bucketSeqno}
@@ -371,5 +370,14 @@
 		WHERE SUGGEST_BUCKET_SEQ = #{suggestBucketSeq}
 		AND REPLY_NO = #{replyNo}
 	</delete>
+
+	<update id="updateUserInfo" parameterType="JSONObject">
+		UPDATE TB_USER_MNG
+		SET	NICKNAME = #{nickname},
+			PROFILE_URL = #{profileUrl},
+			INTRO_DESC = #{introDesc}
+		WHERE
+		USER_SEQ = #{userSeq};
+	</update>
 
 </mapper>
