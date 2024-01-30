@@ -376,8 +376,7 @@
 		SET	NICKNAME = #{nickname},
 			PROFILE_URL = #{profileUrl},
 			INTRO_DESC = #{introDesc}
-		WHERE
-		USER_SEQ = #{userSeq};
+		WHERE USER_SEQ = #{userSeq}
 	</update>
 
 </mapper>
