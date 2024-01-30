@@ -354,7 +354,7 @@ public class MainService extends CommonService {
 
 		// 파일업로드 및 업로드경로 SET
 		if ( file != null && !file.isEmpty() ){
-			paramMap.put("repImgUrl", imageUtil.uploadBucketRepImage(file));
+			paramMap.put("profileUrl", imageUtil.uploadBucketRepImage(file));
 			log.info(":::파일 업로드 완료:::");
 		}
 
