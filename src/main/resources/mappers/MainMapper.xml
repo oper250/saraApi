@@ -43,7 +43,7 @@
 			ORDER BY RAND()
 		</if>
 		<if test="searchGubun == 'mine'">
-			ORDER BY REG_DTTM_DESC
+			ORDER BY REG_DTTM DESC
 		</if>
 		LIMIT  #{stNo}, #{searchCnt}
 	</select>
