@@ -39,7 +39,7 @@
 		<if test="searchGubun == 'searchBucket'">
 			AND BUCKET_NM LIKE CONCAT('%',#{searchText},'%')
 		</if>
-		<if test="searchGubun != 'mine'">
+		<if test="searchGubun != 'suggest'">
 			ORDER BY RAND()
 		</if>
 		<if test="searchGubun == 'mine'">
