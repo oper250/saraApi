@@ -274,13 +274,19 @@
 			   (CASE WHEN C.BUCKET_SEQ IS NOT NULL
 					 THEN 'Y'
 					 ELSE 'N'
-				END) AS ADDED_BOOKMARK_YN
+				END) AS ADDED_BOOKMARK_YN,
+			   (CASE WHEN D.TARGET_USER_SEQ IS NOT NULL
+					 THEN 'Y'
+				 ELSE 'N'
+			   END) AS FOLLOW_YN
 		FROM TB_BUCKET_MNG A
 		INNER JOIN TB_USER_MNG B
 		        ON A.USER_SEQ = B.USER_SEQ
 		LEFT JOIN TB_BOOKMARK C
 				ON A.BUCKET_SEQ = C.BUCKET_SEQ
 			   AND B.USER_SEQ = C.USER_SEQ
+		LEFT JOIN TB_BOOKMARK D
+				ON A.USER_SEQ = D.TARGET_USER_SEQ
 		WHERE A.BUCKET_SEQ = #{bucketSeq}
 		  AND A.DEL_YN = 'N'
 	</select>
@@ -341,8 +347,6 @@
 		WHERE USER_SEQ = #{userSeq}
 		  AND BUCKET_SEQ = #{bucketSeq}
 	</delete>
-
-
 
 	<select id="selectSuggestReplyList" parameterType="JSONObject" resultType="CamelJSONObject">
 		SELECT
