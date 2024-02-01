@@ -255,4 +255,15 @@ public class MainController extends CommonController {
         return super.getResponse(rsMap);
     }
 
+    @ResponseBody
+    @PostMapping( value = "/regFollow" )
+    public Map<String, Object> regFollow(HttpServletRequest request, @RequestParam( required=false, value="file" ) MultipartFile file, @RequestParam Map<String, Object> paramMap) throws Exception {
+        Map<String, Object> rsMap = new HashMap<String, Object>();
+
+        mainService.regFollow(paramMap);
+
+        return super.getResponse(rsMap);
+    }
+
+
 }

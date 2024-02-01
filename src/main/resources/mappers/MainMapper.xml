@@ -386,4 +386,11 @@
 		WHERE USER_SEQ = #{userSeq}
 	</update>
 
+	<insert id="insertFollow" parameterType="JSONObject">
+		INSERT INTO TB_FOLLOW_MNG
+		(USER_SEQ, TARGET_USER_SEQ, REG_DTTM)
+		VALUES(#{userSeq}, #{targetUserSeq}, NOW());
+	</insert>
+
+
 </mapper>
