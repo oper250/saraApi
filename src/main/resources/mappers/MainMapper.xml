@@ -397,5 +397,11 @@
 		  AND TARGET_USER_SEQ = #{targetUserSeq}
 	</delete>
 
+	<update id="updateSuccessYn" parameterType="JSONObject">
+		UPDATE TB_BUCKET_MNG
+		   SET SUCCESS_YN = #{successYn}
+		 WHERE BUCKET_SEQ = #{bucketSeq}
+	</update>
+
 
 </mapper>
