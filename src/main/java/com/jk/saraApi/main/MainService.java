@@ -26,10 +26,10 @@ public class MainService extends CommonService {
 		super(MainService.class);
 	}
 
-	private static final int GET_BUCKET_ITEMS_SEARCH_COUNT = 30;		// 버킷리스트 조회건수
-	private static final int GET_STORY_ITEMS_SEARCH_COUNT = 30;			// 스토리리스트 조회건수
-	private static final int GET_USER_ITEMS_SEARCH_COUNT = 30;			// 사용자리스트 조회건수
-	private static final int GET_SUGGEST_REPLY_COUNT = 30;				// 추천버킷리플 조회건수
+	private static final int GET_BUCKET_ITEMS_SEARCH_COUNT = 50;		// 버킷리스트 조회건수
+	private static final int GET_STORY_ITEMS_SEARCH_COUNT = 50;			// 스토리리스트 조회건수
+	private static final int GET_USER_ITEMS_SEARCH_COUNT = 50;			// 사용자리스트 조회건수
+	private static final int GET_SUGGEST_REPLY_COUNT = 50;				// 추천버킷리플 조회건수
 	private static final String UPDATE_TYPE_INSERT = "I";				// 업데이트 타입(I: insert)
 	private static final String UPDATE_TYPE_DELETE = "D";				// 업데이트 타입(I: insert)
 
