@@ -265,5 +265,15 @@ public class MainController extends CommonController {
         return super.getResponse(rsMap);
     }
 
+    @ResponseBody
+    @PostMapping( value = "/delFollow" )
+    public Map<String, Object> delFollow(HttpServletRequest request, @RequestParam( required=false, value="file" ) MultipartFile file, @RequestParam Map<String, Object> paramMap) throws Exception {
+        Map<String, Object> rsMap = new HashMap<String, Object>();
+
+        mainService.delFollow(paramMap);
+
+        return super.getResponse(rsMap);
+    }
+
 
 }

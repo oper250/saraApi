@@ -396,5 +396,11 @@
 		VALUES(#{userSeq}, #{targetUserSeq}, NOW());
 	</insert>
 
+	<delete id="deleteFollow" parameterType="JSONObject">
+		DELETE FROM TB_FOLLOW_MNG
+		WHERE USER_SEQ = #{userSeq}
+		  AND TARGET_USER_SEQ = #{targetUserSeq}
+	</delete>
+
 
 </mapper>
