@@ -341,18 +341,23 @@ public class MainService extends CommonService {
 		return mainDAO.deleteSuggestReply(paramMap);	// 버킷 등록
 	}
 
-	public int deleteBucket(Map<String, Object> paramMap) throws Exception {
+	public void deleteBucket(Map<String, Object> paramMap) throws Exception {
 		String[] reqKeys = {"bucketSeq"};					// 필수키
 		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
 
-		return mainDAO.deleteBucket(paramMap);	// 버킷 등록
+		mainDAO.deleteStory(paramMap);			// 스토리 삭제
+		mainDAO.deleteBucket(paramMap);			// 버킷 삭제
+
+		return;
 	}
 
-	public int deleteStory(Map<String, Object> paramMap) throws Exception {
+	public void deleteStory(Map<String, Object> paramMap) throws Exception {
 		String[] reqKeys = {"bucketSeq"};					// 필수키
 		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
 
-		return mainDAO.deleteStory(paramMap);	// 버킷 등록
+		mainDAO.deleteStory(paramMap);
+
+		return;
 	}
 
 	public Map<String, Object> getSuggestReplyCnt(Map<String, Object> paramMap) throws Exception {

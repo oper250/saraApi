@@ -232,7 +232,7 @@ public class MainController extends CommonController {
     public Map<String, Object> deleteBucket(HttpServletRequest request, @RequestParam Map<String, Object> paramMap) throws Exception {
         Map<String, Object> rsMap = new HashMap<String, Object>();
 
-        int rsCnt = mainService.deleteBucket(paramMap);
+        mainService.deleteBucket(paramMap);
 
         return super.getResponse(rsMap);
     }
@@ -242,7 +242,7 @@ public class MainController extends CommonController {
     public Map<String, Object> deleteStory(HttpServletRequest request, @RequestParam Map<String, Object> paramMap) throws Exception {
         Map<String, Object> rsMap = new HashMap<String, Object>();
 
-        int rsCnt = mainService.deleteStory(paramMap);
+        mainService.deleteStory(paramMap);
 
         return super.getResponse(rsMap);
     }
