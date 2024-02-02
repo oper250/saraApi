@@ -403,7 +403,7 @@
 		 WHERE BUCKET_SEQ = #{bucketSeq}
 	</update>
 
-	<delete id="deleteFollow" parameterType="JSONObject">
+	<delete id="deleteBucket" parameterType="JSONObject">
 		DELETE FROM TB_BUCKET_MNG
 		WHERE BUCKET_SEQ = #{bucketSeq}
 	</delete>
