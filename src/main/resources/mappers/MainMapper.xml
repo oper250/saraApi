@@ -413,5 +413,23 @@
 		WHERE BUCKET_SEQ = #{bucketSeq}
 	</delete>
 
+	<select id="selectMyCnt" parameterType="JSONObject" resultType="CamelJSONObject">
+		SELECT
+			(SELECT COUNT(1)
+			 FROM TB_BUCKET_MNG
+			 WHERE USER_SEQ = #{userSeq}) AS BUCKET_CNT,
+			(SELECT COUNT(1)
+			 FROM TB_BUCKET_MNG A
+					  INNER JOIN TB_STORY_MNG B
+								 ON A.BUCKET_SEQ = B.BUCKET_SEQ
+			 WHERE USER_SEQ = #{userSeq}) AS STORY_CNT,
+			(SELECT COUNT(1)
+			 FROM TB_BUCKET_MNG
+			 WHERE USER_SEQ = #{userSeq}
+			   AND SUCCESS_YN = 'Y') AS SUCCESS_CNT
+		FROM DUAL
+	</select>
+
+
 
 </mapper>

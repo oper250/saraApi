@@ -38,8 +38,6 @@ public class MainService extends CommonService {
 		String[] reqKeys = {"userId", "userPwd"};		// 필수키
 		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
 
-		System.out.println("!!!!!!!!" + paramMap);
-
 		paramMap.put("userPwd", Encryptor.sha512( (String)paramMap.get("userPwd") ) );
 
 		String userSeq = mainDAO.login(paramMap);
@@ -411,4 +409,12 @@ public class MainService extends CommonService {
 
 		return;
 	}
+
+	public Map<String, Object> getMyCnt(Map<String, Object> paramMap) throws Exception {
+		String[] reqKeys = {"userSeq"};					// 필수키
+		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
+
+		return mainDAO.selectMyCnt(paramMap);	// 버킷 등록
+	}
+
 }

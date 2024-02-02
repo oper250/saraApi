@@ -129,4 +129,8 @@ public class MainDAO extends CommonDAO {
 	public int deleteStory(Map<String, Object> paramMap) throws Exception {
 		return sqlSession.insert( "MainMapper.deleteStory", paramMap);
 	}
+
+	public Map<String, Object> selectMyCnt(Map<String, Object> paramMap) throws Exception {
+		return sqlSession.selectOne("MainMapper.selectMyCnt", paramMap);
+	}
 }

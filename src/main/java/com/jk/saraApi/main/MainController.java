@@ -305,4 +305,12 @@ public class MainController extends CommonController {
         return super.getResponse(rsMap);
     }
 
+    @ResponseBody
+    @PostMapping( value = "/getMyCnt" )
+    public Map<String, Object> getMyCnt(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
+        Map<String, Object> rsMap = mainService.getMyCnt(paramMap);
+
+        return super.getResponse(rsMap);
+    }
+
 }
