@@ -408,5 +408,10 @@
 		WHERE BUCKET_SEQ = #{bucketSeq}
 	</delete>
 
+	<delete id="deleteStory" parameterType="JSONObject">
+		DELETE FROM TB_STORY_MNG
+		WHERE BUCKET_SEQ = #{bucketSeq}
+	</delete>
+
 
 </mapper>

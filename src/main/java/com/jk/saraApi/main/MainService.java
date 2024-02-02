@@ -348,6 +348,13 @@ public class MainService extends CommonService {
 		return mainDAO.deleteBucket(paramMap);	// 버킷 등록
 	}
 
+	public int deleteStory(Map<String, Object> paramMap) throws Exception {
+		String[] reqKeys = {"bucketSeq"};					// 필수키
+		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
+
+		return mainDAO.deleteStory(paramMap);	// 버킷 등록
+	}
+
 	public Map<String, Object> getSuggestReplyCnt(Map<String, Object> paramMap) throws Exception {
 		String[] reqKeys = {"suggestBucketSeq"};					// 필수키
 		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
