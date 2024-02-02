@@ -403,5 +403,10 @@
 		 WHERE BUCKET_SEQ = #{bucketSeq}
 	</update>
 
+	<delete id="deleteFollow" parameterType="JSONObject">
+		DELETE FROM TB_BUCKET_MNG
+		WHERE BUCKET_SEQ = #{bucketSeq}
+	</delete>
+
 
 </mapper>

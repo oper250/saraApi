@@ -115,10 +115,14 @@ public class MainDAO extends CommonDAO {
 	}
 
 	public int deleteFollow(Map<String, Object> paramMap) throws Exception {
-		return sqlSession.insert( "MainMapper.deleteFollow", paramMap);
+		return sqlSession.delete( "MainMapper.deleteFollow", paramMap);
 	}
 
 	public int updateSuccessYn(Map<String, Object> paramMap) throws Exception {
 		return sqlSession.update("MainMapper.updateSuccessYn", paramMap);
+	}
+
+	public int deleteBucket(Map<String, Object> paramMap) throws Exception {
+		return sqlSession.insert( "MainMapper.deleteBucket", paramMap);
 	}
 }

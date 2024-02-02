@@ -228,6 +228,16 @@ public class MainController extends CommonController {
     }
 
     @ResponseBody
+    @PostMapping( value = "/deleteBucket" )
+    public Map<String, Object> deleteBucket(HttpServletRequest request, @RequestParam Map<String, Object> paramMap) throws Exception {
+        Map<String, Object> rsMap = new HashMap<String, Object>();
+
+        int rsCnt = mainService.deleteBucket(paramMap);
+
+        return super.getResponse(rsMap);
+    }
+
+    @ResponseBody
     @PostMapping( value = "/getRandomImgList" )
     public Map<String, Object> getRandomImgList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
         Map<String, Object> rsMap = mainService.getRandomImgList();
