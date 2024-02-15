@@ -449,14 +449,4 @@
 			   AND SUCCESS_YN = 'Y') AS SUCCESS_CNT
 		FROM DUAL
 	</select>
-
-	<select id="selectMyCnt" parameterType="JSONObject" resultType="CamelJSONObject">
-		SELECT COUNT(1)
-		FROM TB_BUCKET_MNG
-		WHERE USER_SEQ = '1'
-		  AND DEL_YN = 'N'
-	</select>
-
-
-
 </mapper>
