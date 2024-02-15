@@ -82,7 +82,8 @@
 			A.REG_DTTM,
 			A.DEL_YN,
 			CONCAT(C.USER_ID, '@', C.NICKNAME) AS FULL_NAME,
-			(CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y' ELSE 'N' END) AS MORE_YN
+			(CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y' ELSE 'N' END) AS MORE_YN,
+			(SELECT COUNT(T1.REPLY_NO) FROM TB_STORY_REPLY T1 WHERE T1.BUCKET_SEQ = A.BUCKET_SEQ AND T1.STORY_SEQ = A.STORY_SEQ) AS REPLY_CNT
 		FROM TB_STORY_MNG A
 				 LEFT JOIN TB_BUCKET_MNG B
 						   ON A.BUCKET_SEQ = B.BUCKET_SEQ
@@ -326,6 +327,25 @@
 	 	);
 	</insert>
 
+	<insert id="insertStoryReply" parameterType="JSONObject">
+		INSERT INTO TB_STORY_REPLY
+			(REPLY_NO,
+			STORY_SEQ,
+			BUCKET_SEQ,
+			USER_SEQ,
+			REPLY_CONTENTS,
+			DEL_YN,
+			REG_DTTM)
+		VALUES(
+			(SELECT NVL(MAX(A.REPLY_NO), 0) + 1 FROM TB_STORY_REPLY A WHERE A.STORY_SEQ = #{storySeq} AND A.BUCKET_SEQ = #{bucketSeq}),
+			#{storySeq},
+			#{bucketSeq},
+			#{userSeq},
+			'테스트',
+			'N',
+			NOW())
+	</insert>
+
 	<insert id="insertBookmark" parameterType="JSONObject">
 		INSERT INTO TB_BOOKMARK (
 			USER_SEQ,
@@ -428,6 +448,13 @@
 			 WHERE USER_SEQ = #{userSeq}
 			   AND SUCCESS_YN = 'Y') AS SUCCESS_CNT
 		FROM DUAL
+	</select>
+
+	<select id="selectMyCnt" parameterType="JSONObject" resultType="CamelJSONObject">
+		SELECT COUNT(1)
+		FROM TB_BUCKET_MNG
+		WHERE USER_SEQ = '1'
+		  AND DEL_YN = 'N'
 	</select>
 
 
