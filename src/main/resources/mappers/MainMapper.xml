@@ -431,6 +431,7 @@
 	<delete id="deleteStory" parameterType="JSONObject">
 		DELETE FROM TB_STORY_MNG
 		WHERE BUCKET_SEQ = #{bucketSeq}
+		  AND STORY_SEQ = #{storySeq}
 	</delete>
 
 	<select id="selectMyCnt" parameterType="JSONObject" resultType="CamelJSONObject">

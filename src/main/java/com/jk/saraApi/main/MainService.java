@@ -350,7 +350,7 @@ public class MainService extends CommonService {
 	}
 
 	public void deleteStory(Map<String, Object> paramMap) throws Exception {
-		String[] reqKeys = {"bucketSeq"};					// 필수키
+		String[] reqKeys = {"bucketSeq", "storySeq"};					// 필수키
 		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
 
 		mainDAO.deleteStory(paramMap);
