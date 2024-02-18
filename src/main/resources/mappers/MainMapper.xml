@@ -366,9 +366,9 @@
 	<select id="selectStoryReplyList" parameterType="JSONObject" resultType="CamelJSONObject">
 		SELECT
 			ROW_NUMBER() OVER(ORDER BY REPLY_NO DESC) AS RN,
-				(CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y'
-					  ELSE 'N'
-					END) AS MORE_YN
+			(CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y'
+				  ELSE 'N'
+			END) AS MORE_YN,
 			REPLY_NO,
 			USER_SEQ,
 			REPLY_CONTENTS,
