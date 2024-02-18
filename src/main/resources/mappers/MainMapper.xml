@@ -416,6 +416,13 @@
 		AND REPLY_NO = #{replyNo}
 	</delete>
 
+	<delete id="deleteStoryReply" parameterType="JSONObject">
+		DELETE FROM TB_STORY_REPLY
+		WHERE BUCKET_SEQ = #{bucketSeq}
+		  AND STORY_SEQ = #{storySeq}
+		  AND REPLY_NO = #{replyNo}
+	</delete>
+
 	<update id="updateUserInfo" parameterType="JSONObject">
 		UPDATE TB_USER_MNG
 		SET	NICKNAME = #{nickname},
