@@ -81,6 +81,10 @@ public class MainDAO extends CommonDAO {
 		return sqlSession.insert( "MainMapper.insertSuggestReply", paramMap);
 	}
 
+	public int insertStoryReply(Map<String, Object> paramMap) throws Exception {
+		return sqlSession.insert( "MainMapper.insertStoryReply", paramMap);
+	}
+
 	public int insertBookmark(Map<String, Object> paramMap) throws Exception {
 		return sqlSession.insert( "MainMapper.insertBookmark", paramMap);
 	}

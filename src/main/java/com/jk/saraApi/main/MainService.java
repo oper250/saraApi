@@ -286,7 +286,14 @@ public class MainService extends CommonService {
 		String[] reqKeys = {"suggestBucketSeq", "userSeq"};					// 필수키
 		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
 
-		return mainDAO.insertSuggestReply(paramMap);	// 버킷 등록
+		return mainDAO.insertSuggestReply(paramMap);
+	}
+
+	public int regStoryReply(Map<String, Object> paramMap) throws Exception {
+		String[] reqKeys = {"storySeq", "bucketSeq", "userSeq"};			// 필수키
+		super.checkVal(paramMap, reqKeys);			// 벨리데이션 체크
+
+		return mainDAO.insertStoryReply(paramMap);
 	}
 
 	public int saveBookmark(Map<String, Object> paramMap) throws Exception {
