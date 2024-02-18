@@ -365,16 +365,21 @@
 
 	<select id="selectStoryReplyList" parameterType="JSONObject" resultType="CamelJSONObject">
 		SELECT
-			ROW_NUMBER() OVER(ORDER BY REPLY_NO DESC) AS RN,
+			ROW_NUMBER() OVER(ORDER BY A.REPLY_NO DESC) AS RN,
 			(CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y'
 				  ELSE 'N'
 			END) AS MORE_YN,
-			REPLY_NO,
-			USER_SEQ,
-			REPLY_CONTENTS,
-			DEL_YN,
-			REG_DTTM
-		FROM TB_STORY_REPLY
+			A.REPLY_NO,
+			A.USER_SEQ,
+			A.REPLY_CONTENTS,
+			A.DEL_YN,
+			A.REG_DTTM,
+			B.NICKNAME,
+			B.PROFILE_URL,
+			B.USER_ID
+		FROM TB_STORY_REPLY A
+		LEFT JOIN TB_USER_MNG B
+			   ON A.USER_SEQ = B.USER_SEQ
 		WHERE BUCKET_SEQ = #{bucketSeq}
 		  AND STORY_SEQ = #{storySeq}
 	</select>
@@ -392,8 +397,8 @@
 					ELSE 'N'
 			END) AS MORE_YN
 		FROM TB_SUGGEST_REPLY A
-				 LEFT JOIN TB_USER_MNG B
-						   ON A.USER_SEQ = B.USER_SEQ
+ 		LEFT JOIN TB_USER_MNG B
+			   ON A.USER_SEQ = B.USER_SEQ
 		WHERE A.DEL_YN = 'N'
 		  AND SUGGEST_BUCKET_SEQ = #{suggestBucketSeq}
 		ORDER BY RN
