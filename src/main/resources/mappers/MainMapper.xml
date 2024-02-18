@@ -346,25 +346,6 @@
 			NOW())
 	</insert>
 
-	<insert id="insertStoryReply" parameterType="JSONObject">
-		INSERT INTO TB_STORY_REPLY
-			(REPLY_NO,
-			STORY_SEQ,
-			BUCKET_SEQ,
-			USER_SEQ,
-			REPLY_CONTENTS,
-			DEL_YN,
-			REG_DTTM)
-		VALUES(
-			(SELECT NVL(MAX(A.REPLY_NO), 0) + 1 FROM TB_STORY_REPLY A WHERE A.STORY_SEQ = #{storySeq} AND A.BUCKET_SEQ = #{bucketSeq}),
-			#{storySeq},
-			#{bucketSeq},
-			#{userSeq},
-			'테스트',
-			'N',
-			NOW())
-	</insert>
-
 	<insert id="insertBookmark" parameterType="JSONObject">
 		INSERT INTO TB_BOOKMARK (
 			USER_SEQ,
