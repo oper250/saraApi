@@ -93,6 +93,10 @@ public class MainDAO extends CommonDAO {
 		return sqlSession.selectList("MainMapper.selectSuggestReplyList", paramMap);
 	}
 
+	public List<Map<String, Object>> selectStoryReplyList(Map<String, Object> paramMap) throws Exception {
+		return sqlSession.selectList("MainMapper.selectStoryReplyList", paramMap);
+	}
+
 	public int deleteSuggestReply(Map<String, Object> paramMap) throws Exception {
 		return sqlSession.delete("MainMapper.deleteSuggestReply", paramMap);
 	}

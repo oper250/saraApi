@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +29,7 @@ public class MainService extends CommonService {
 	private static final int GET_STORY_ITEMS_SEARCH_COUNT = 50;			// 스토리리스트 조회건수
 	private static final int GET_USER_ITEMS_SEARCH_COUNT = 50;			// 사용자리스트 조회건수
 	private static final int GET_SUGGEST_REPLY_COUNT = 50;				// 추천버킷리플 조회건수
+	private static final int GET_STORY_REPLY_COUNT = 50;				// 스토리리플 조회건수
 	private static final String UPDATE_TYPE_INSERT = "I";				// 업데이트 타입(I: insert)
 	private static final String UPDATE_TYPE_DELETE = "D";				// 업데이트 타입(I: insert)
 
@@ -305,7 +305,7 @@ public class MainService extends CommonService {
 		return rs;	// 버킷 등록
 	}
 
-	public Map<String, Object>getSuggestReplyList(Map<String, Object> paramMap) throws Exception {
+	public Map<String, Object> getSuggestReplyList(Map<String, Object> paramMap) throws Exception {
 		String[] reqKeys = {"stNo", "suggestBucketSeq"};		// 필수키
 		super.checkVal(paramMap, reqKeys);
 
@@ -321,6 +321,33 @@ public class MainService extends CommonService {
 		if( !CommonUtil.isEmptyList(rsList) ) {
 			moreYn = (String) rsList.get(0).get("moreYn");		// 더보기여부 SET
 			nextStNo = (Integer) paramMap.get("stNo") + GET_SUGGEST_REPLY_COUNT;
+		} else {
+			moreYn = "N";
+		}
+
+		rsMap.put( "rsList", rsList );
+		rsMap.put( "moreYn", moreYn );
+		rsMap.put( "nextStNo", nextStNo );
+
+		return rsMap;
+	}
+
+	public Map<String, Object> getStoryReplyList(Map<String, Object> paramMap) throws Exception {
+		String[] reqKeys = {"stNo", "bucketSeq", "storySeq"};		// 필수키
+		super.checkVal(paramMap, reqKeys);
+
+		Map<String, Object> rsMap = new HashMap<String, Object>();
+
+		String moreYn = "";		// 더보기여부
+		int nextStNo = 0;
+
+		paramMap.put("searchCnt", GET_STORY_REPLY_COUNT);
+
+		List<Map<String, Object>> rsList = mainDAO.selectStoryReplyList(paramMap);
+
+		if( !CommonUtil.isEmptyList(rsList) ) {
+			moreYn = (String) rsList.get(0).get("moreYn");		// 더보기여부 SET
+			nextStNo = (Integer) paramMap.get("stNo") + GET_STORY_REPLY_COUNT;
 		} else {
 			moreYn = "N";
 		}
