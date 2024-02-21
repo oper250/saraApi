@@ -452,8 +452,14 @@
 	</update>
 
 	<delete id="deleteBucket" parameterType="JSONObject">
+		DELETE FROM TB_STORY_MNG
+		WHERE BUCKET_SEQ = #{bucketSeq};
+
+		DELETE FROM TB_STORY_MNG
+		WHERE BUCKET_SEQ = #{bucketSeq};
+
 		DELETE FROM TB_BUCKET_MNG
-		WHERE BUCKET_SEQ = #{bucketSeq}
+		WHERE BUCKET_SEQ = #{bucketSeq};
 	</delete>
 
 	<delete id="deleteStory" parameterType="JSONObject">

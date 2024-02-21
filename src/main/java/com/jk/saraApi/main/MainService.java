@@ -384,7 +384,6 @@ public class MainService extends CommonService {
 		String[] reqKeys = {"bucketSeq"};					// 필수키
 		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
 
-		mainDAO.deleteStory(paramMap);			// 스토리 삭제
 		mainDAO.deleteBucket(paramMap);			// 버킷 삭제
 
 		return;
