@@ -452,7 +452,7 @@
 	</update>
 
 	<delete id="deleteBucket" parameterType="JSONObject">
-		DELETE FROM TB_STORY_MNG
+		DELETE FROM TB_STORY_REPLY
 		WHERE BUCKET_SEQ = #{bucketSeq};
 
 		DELETE FROM TB_STORY_MNG
