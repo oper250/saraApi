@@ -29,8 +29,6 @@
 			   REG_DTTM,
 			   DEL_YN,
 			   SUCCESS_YN,
-			   NICKNAME,
-			   USER_ID,
 			   (CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y'
 					 ELSE 'N'
 				   END) AS MORE_YN
