@@ -426,7 +426,7 @@
 	<update id="updateUserInfo" parameterType="JSONObject">
 		UPDATE TB_USER_MNG
 		SET	NICKNAME = #{nickname},
-		<if test="profileUrl != 'null' and profileUrl != ''">
+		<if test="profileUrl != 'null' and !profileUrl.equals('')">
 			PROFILE_URL = #{profileUrl},
 		</if>
 			INTRO_DESC = #{introDesc}
