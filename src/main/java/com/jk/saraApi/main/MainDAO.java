@@ -145,4 +145,9 @@ public class MainDAO extends CommonDAO {
 	public Map<String, Object> selectMyCnt(Map<String, Object> paramMap) throws Exception {
 		return sqlSession.selectOne("MainMapper.selectMyCnt", paramMap);
 	}
+
+	public String loginCheckByTocken(Map<String, Object> paramMap) throws Exception {
+		return sqlSession.selectOne( "MainMapper.loginCheckByTocken", paramMap );
+	}
+
 }

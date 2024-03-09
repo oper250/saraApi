@@ -123,16 +123,16 @@
 
 	<select id="selectUserList" parameterType="JSONObject" resultType="CamelJSONObject">
 		SELECT USER_SEQ,
-		       USER_ID,
-		       USER_PWD,
-		       PROFILE_URL,
-		       INTRO_DESC,
-		       REG_DTTM,
-		       DEL_YN,
-			   (CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y'
-					 ELSE 'N'
-				   END) AS MORE_YN
-		FROM TB_USER_MNG
+			 USER_ID,
+			 USER_PWD,
+			 PROFILE_URL,
+			 INTRO_DESC,
+			 REG_DTTM,
+			 DEL_YN,
+			 (CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y'
+				 ELSE 'N'
+				 END) AS MORE_YN
+			FROM TB_USER_MNG
 		WHERE USER_ID LIKE CONCAT('%',#{searchText},'%')
 		  AND DEL_YN = 'N'
 		LIMIT  #{stNo}, #{searchCnt}
@@ -257,6 +257,14 @@
 		FROM TB_USER_MNG
 		WHERE USER_SEQ = #{userSeq}
 	</select>
+
+	<select id="loginCheckByTocken" parameterType="JSONObject" resultType="CamelJSONObject">
+		SELECT USER_SEQ
+		FROM TB_USER_MNG
+		WHERE USER_SEQ = #{idTocken}
+	</select>
+
+
 
 	<select id="selectBucketDetail" parameterType="JSONObject" resultType="CamelJSONObject">
 		SELECT A.BUCKET_NM,
