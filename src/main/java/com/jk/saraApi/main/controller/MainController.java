@@ -1,6 +1,7 @@
-package com.jk.saraApi.main;
+package com.jk.saraApi.main.controller;
 
 import com.jk.saraApi.common.CommonController;
+import com.jk.saraApi.main.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -21,6 +21,13 @@ public class MainController extends CommonController {
     public MainController() {
         super(MainController.class);
     }
+
+    @ResponseBody
+    @GetMapping("/")
+    public String mainP() {
+        return "main Controller";
+    }
+
 
     @ResponseBody
     @SuppressWarnings("unchecked")

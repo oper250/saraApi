@@ -1,6 +1,6 @@
 plugins {
 	java
-	id("org.springframework.boot") version "2.7.14"
+	id("org.springframework.boot") version "2.7.18"
 	id("io.spring.dependency-management") version "1.0.15.RELEASE"
 }
 
@@ -31,9 +31,17 @@ dependencies {
 	implementation("org.mybatis:mybatis:3.5.13")
 	implementation("com.googlecode.json-simple:json-simple:1.1.1")
 	implementation("commons-io:commons-io:2.11.0")
-	implementation("com.fasterxml.jackson.core:jackson-databind:2.15.0")
+	implementation("com.fasterxml.jackson.core:jackson-databind")
 	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.0")
-	implementation("io.jsonwebtoken:jjwt:0.9.1")
+	//implementation("io.jsonwebtoken:jjwt:0.9.1")
+
+	// JWT 관련 라이브러리
+	implementation("org.springframework.boot:spring-boot-starter-mustache")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	compileOnly("org.projectlombok:lombok")
+	implementation("io.jsonwebtoken:jjwt-api:0.12.3")
+	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.3")
+	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.3")
 
 	runtimeOnly("mysql:mysql-connector-java:8.0.33")
 }

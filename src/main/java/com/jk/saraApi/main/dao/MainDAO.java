@@ -1,4 +1,4 @@
-package com.jk.saraApi.main;
+package com.jk.saraApi.main.dao;
 
 import com.jk.saraApi.common.CommonDAO;
 import org.springframework.stereotype.Repository;

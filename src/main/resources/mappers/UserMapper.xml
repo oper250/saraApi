@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+    <insert id="joinProcess" parameterType="UserDTO">
+        INSERT INTO TB_USER_MNG
+            (USER_SEQ,
+             USER_ID,
+             USER_PWD,
+             NICKNAME,
+             PROFILE_URL,
+             INTRO_DESC,
+             REG_DTTM,
+             DEL_YN)
+        VALUES(
+            NEXTVAL(SEQ_USER_MNG),
+            #{userId},
+            #{userPwd},
+            'test계정',
+            'https://img.moorato.com/saraApi/upload/rep/202309/hSNd7R3920230918ug07s87X.PNG',
+            '',
+            now(),
+            'N')
+    </insert>
+
+    <select id="checkExistsId" parameterType="JSONObject" resultType="int">
+        SELECT count(USER_ID)
+        FROM TB_USER_MNG
+        WHERE USER_ID = #{userId}
+          AND DEL_YN = 'N'
+    </select>
+
+    <select id="selectUserInfo" parameterType="String" resultType="CamelJSONObject">
+        SELECT
+            USER_SEQ,
+            USER_ID,
+            USER_PWD,
+            NICKNAME,
+            PROFILE_URL,
+            INTRO_DESC,
+            ROLE,
+            DEL_YN
+        FROM TB_USER_MNG
+        WHERE USER_ID = #{userId}
+          AND DEL_YN = 'N'
+    </select>
+</mapper>
