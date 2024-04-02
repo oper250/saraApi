@@ -21,10 +21,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
         ObjectMapper objectMapper = new ObjectMapper();
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!! :: " + userId);
         Map<String, Object> rsMap = userDAO.selectUserInfo(userId);
 
-        System.out.println("!@#!@#!@# :: " + rsMap.size());
+        System.out.println("!rsMap.size() :: " + rsMap.size());
 
         UserDTO userDTO = objectMapper.convertValue(rsMap, UserDTO.class);
 

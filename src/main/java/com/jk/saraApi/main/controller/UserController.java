@@ -20,14 +20,9 @@ public class UserController extends CommonController {
     @ResponseBody
     @PostMapping(value = "/join")
     public String join(@RequestBody UserDTO userDTO) throws Exception {
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~!!!!");
-
         System.out.println("!!!!!!" + userDTO.getUserId());
 
-//        System.out.println("~~~~~~~~~~~" + userDTO.getUserId());
-//        System.out.println("~~~~~~~~~~~" + userDTO.getUserPwd());
-
-        //int rs = userService.joinProcess(userDTO);
+        int rs = userService.joinProcess(userDTO);
 
 
         return "join";

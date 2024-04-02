@@ -3,7 +3,6 @@ package com.jk.saraApi.main.controller;
 import com.jk.saraApi.common.CommonController;
 import com.jk.saraApi.main.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,10 +28,6 @@ public class MainController extends CommonController {
         return "main Controller";
     }
 
-    @Value("app.test")
-    private String test;
-
-
     @ResponseBody
     @SuppressWarnings("unchecked")
     @PostMapping( value = "/login" )
@@ -56,8 +51,6 @@ public class MainController extends CommonController {
     @ResponseBody
     @PostMapping( value = "/getBucketList" )
     public Map<String, Object> getBucketList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
-        System.out.println("!!!!!!!" + test);
-
         Map<String, Object> rsMap;
 
         rsMap = mainService.getBucketList(paramMap);
