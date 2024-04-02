@@ -350,16 +350,4 @@ public class MainController extends CommonController {
         return super.getResponse(rsMap);
     }
 
-    @ResponseBody
-    @PostMapping( value = "/loginCheckByTocken" )
-    public Map<String, Object> loginCheckByTocken(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
-        Map<String, Object> rsMap = new HashMap<String, Object>();
-
-        String userSeq = mainService.loginCheckByTocken(paramMap);       // 사용자 시퀀스
-
-        rsMap.put("userSeq", userSeq);
-        log.info(">>> 로그인 성공 <<<");
-
-        return super.getResponse(rsMap);
-    }
 }
