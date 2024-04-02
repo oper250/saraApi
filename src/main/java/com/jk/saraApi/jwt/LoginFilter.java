@@ -44,7 +44,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
-        expiredMs = 60*60*1000L*3;       // 유효기간 셋팅 (3시간)
+        expiredMs = 60*60*1000L*240;       // 유효기간 셋팅 (10일)
 
         CustomUserDetails customUserDetails = (CustomUserDetails)  authentication.getPrincipal();
 
