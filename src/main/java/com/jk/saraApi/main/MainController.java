@@ -8,7 +8,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -45,6 +44,8 @@ public class MainController extends CommonController {
     @ResponseBody
     @PostMapping( value = "/getBucketList" )
     public Map<String, Object> getBucketList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
+        System.out.println("~~~~~~~~~~ 호출됨!!!!!!!!");
+
         Map<String, Object> rsMap;
 
         rsMap = mainService.getBucketList(paramMap);
