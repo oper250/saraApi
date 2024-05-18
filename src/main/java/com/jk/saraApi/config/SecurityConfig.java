@@ -1,18 +1,14 @@
 package com.jk.saraApi.config;
 
-import com.jk.saraApi.jwt.JwtFilter;
 import com.jk.saraApi.jwt.JwtUtil;
-import com.jk.saraApi.jwt.LoginFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 @Configuration
@@ -40,7 +36,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         //csrf disable
-        http
+/*        http
                 .csrf((auth) -> auth.disable());
         //From 로그인 방식 disable
         http
@@ -73,7 +69,7 @@ public class SecurityConfig {
 
         // 테스트용 - 토큰이 없어도 테스트 가능
         http.csrf().disable();
-
+*/
         return http.build();
     }
 }
