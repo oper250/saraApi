@@ -62,6 +62,8 @@ public class MainService extends CommonService {
 		String[] reqKeys = {"stNo"};		// 필수키
 		super.checkVal(paramMap, reqKeys);
 
+		System.out.println("~~~~" + paramMap);
+
 		Map<String, Object> rsMap = new HashMap<String, Object>();
 		List<Map<String, Object>> bucketList = new ArrayList<Map<String, Object>>();
 		String moreYn = "";		// 더보기여부
