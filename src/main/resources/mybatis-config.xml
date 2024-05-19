@@ -19,6 +19,5 @@
 		<typeAlias alias="JSONObject" type="org.json.simple.JSONObject"/>
 		<typeAlias alias="hashMap" type="java.util.HashMap"/>
 		<typeAlias alias="CamelJSONObject" type="com.jk.saraApi.common.CamelJSONObject"/>
-		<typeAlias alias="UserDTO" type="com.jk.saraApi.main.dto.UserDTO"/>
 	</typeAliases>
 </configuration>
