@@ -258,14 +258,6 @@
 		WHERE USER_SEQ = #{userSeq}
 	</select>
 
-	<select id="loginCheckByTocken" parameterType="JSONObject" resultType="CamelJSONObject">
-		SELECT USER_SEQ
-		FROM TB_USER_MNG
-		WHERE USER_SEQ = #{idTocken}
-	</select>
-
-
-
 	<select id="selectBucketDetail" parameterType="JSONObject" resultType="CamelJSONObject">
 		SELECT A.BUCKET_NM,
 		       A.REP_IMG_URL,

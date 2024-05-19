@@ -1,9 +1,10 @@
-package com.jk.saraApi.main;
+package com.jk.saraApi.main.service;
 
 import com.jk.saraApi.common.CommonException;
 import com.jk.saraApi.common.CommonService;
 import com.jk.saraApi.common.CommonUtil;
 import com.jk.saraApi.common.Encryptor;
+import com.jk.saraApi.main.dao.MainDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,6 +61,8 @@ public class MainService extends CommonService {
 	public Map<String, Object> getBucketList(Map<String, Object> paramMap) throws Exception {
 		String[] reqKeys = {"stNo"};		// 필수키
 		super.checkVal(paramMap, reqKeys);
+
+		System.out.println("~~~~" + paramMap);
 
 		Map<String, Object> rsMap = new HashMap<String, Object>();
 		List<Map<String, Object>> bucketList = new ArrayList<Map<String, Object>>();
@@ -455,15 +458,6 @@ public class MainService extends CommonService {
 		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
 
 		return mainDAO.selectMyCnt(paramMap);	// 버킷 등록
-	}
-
-	public String loginCheckByTocken(Map<String, Object> paramMap) throws Exception {
-		String[] reqKeys = {"idTocken"};		// 필수키
-		super.checkVal(paramMap, reqKeys);					// 벨리데이션 체크
-
-		String userSeq = mainDAO.loginCheckByTocken(paramMap);
-
-		return userSeq;
 	}
 
 }
