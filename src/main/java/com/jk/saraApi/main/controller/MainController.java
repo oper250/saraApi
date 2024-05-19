@@ -1,6 +1,7 @@
-package com.jk.saraApi.main;
+package com.jk.saraApi.main.controller;
 
 import com.jk.saraApi.common.CommonController;
+import com.jk.saraApi.main.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -344,19 +344,5 @@ public class MainController extends CommonController {
 
         return super.getResponse(rsMap);
     }
-
-    @ResponseBody
-    @PostMapping( value = "/loginCheckByTocken" )
-    public Map<String, Object> loginCheckByTocken(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
-        Map<String, Object> rsMap = new HashMap<String, Object>();
-
-        String userSeq = mainService.loginCheckByTocken(paramMap);       // 사용자 시퀀스
-
-        rsMap.put("userSeq", userSeq);
-        log.info(">>> 로그인 성공 <<<");
-
-        return super.getResponse(rsMap);
-    }
-
 
 }
