@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
 
-@Repository( "BucketDAO" )
+@Repository( "MainDAO" )
 public class MainDAO extends CommonDAO {
 
 	/* 로그인 */
