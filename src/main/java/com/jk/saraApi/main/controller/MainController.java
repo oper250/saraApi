@@ -45,7 +45,7 @@ public class MainController extends CommonController {
     @ResponseBody
     @PostMapping( value = "/getBucketList" )
     public Map<String, Object> getBucketList(@RequestBody Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
-        System.out.println("일단 호출됐죠!!!!!!!!!!!??");
+        System.out.println("일단 호출됐죠123123!!!!!!!!!!!??");
         Map<String, Object> rsMap;
 
         rsMap = mainService.getBucketList(paramMap);
