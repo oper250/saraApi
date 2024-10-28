@@ -14,7 +14,7 @@
 					COUNT(1),
 					USER_SEQ
 				  FROM TB_USER_MNG
-				 WHERE USER_ID = #{userId}
+				 WHERE USERNAME = #{userId}
 		   		   AND USER_PWD = #{userPwd}
 			) T1
 	</select>
@@ -81,7 +81,7 @@
 			A.IMG_URL,
 			A.REG_DTTM,
 			A.DEL_YN,
-			CONCAT(C.USER_ID, '@', C.NICKNAME) AS FULL_NAME,
+			CONCAT(C.USERNAME, '@', C.NICKNAME) AS FULL_NAME,
 			(CASE WHEN Count(*) OVER() > ( #{stNo} + #{searchCnt} ) THEN 'Y' ELSE 'N' END) AS MORE_YN,
 			(SELECT COUNT(T1.REPLY_NO) FROM TB_STORY_REPLY T1 WHERE T1.BUCKET_SEQ = A.BUCKET_SEQ AND T1.STORY_SEQ = A.STORY_SEQ) AS REPLY_CNT
 		FROM TB_STORY_MNG A
@@ -101,7 +101,7 @@
 			   A.SEND_USER_SEQ,
 			   A.REG_DTTM,
 			   B.PROFILE_URL,
-			   CONCAT(B.USER_ID, '@', B.NICKNAME) AS FULL_NAME
+			   CONCAT(B.USERNAME, '@', B.NICKNAME) AS FULL_NAME
 		FROM TB_ALARM_MNG A
 		LEFT JOIN TB_USER_MNG B
 				ON A.SEND_USER_SEQ = B.USER_SEQ
@@ -123,7 +123,7 @@
 
 	<select id="selectUserList" parameterType="JSONObject" resultType="CamelJSONObject">
 		SELECT USER_SEQ,
-			 USER_ID,
+			 USERNAME,
 			 USER_PWD,
 			 PROFILE_URL,
 			 INTRO_DESC,
@@ -133,7 +133,7 @@
 				 ELSE 'N'
 				 END) AS MORE_YN
 			FROM TB_USER_MNG
-		WHERE USER_ID LIKE CONCAT('%',#{searchText},'%')
+		WHERE USERNAME LIKE CONCAT('%',#{searchText},'%')
 		  AND DEL_YN = 'N'
 		LIMIT  #{stNo}, #{searchCnt}
 	</select>
@@ -253,7 +253,7 @@
 	</update>
 
 	<select id="selectUserInfo" parameterType="JSONObject" resultType="CamelJSONObject">
-		SELECT USER_SEQ, USER_ID, NICKNAME, USER_PWD, PROFILE_URL, INTRO_DESC, REG_DTTM, DEL_YN, CONCAT(USER_ID, '@', NICKNAME) AS FULL_NAME
+		SELECT USER_SEQ, USERNAME, NICKNAME, USER_PWD, PROFILE_URL, INTRO_DESC, REG_DTTM, DEL_YN, CONCAT(USERNAME, '@', NICKNAME) AS FULL_NAME
 		FROM TB_USER_MNG
 		WHERE USER_SEQ = #{userSeq}
 	</select>
@@ -262,11 +262,11 @@
 		SELECT A.BUCKET_NM,
 		       A.REP_IMG_URL,
 		       B.PROFILE_URL,
-		       B.USER_ID,
+		       B.USERNAME,
 		       B.USER_SEQ,
 		       B.NICKNAME,
 		       A.SUCCESS_YN,
-		       CONCAT(USER_ID, '@', NICKNAME) AS FULL_NAME,
+		       CONCAT(USERNAME, '@', NICKNAME) AS FULL_NAME,
 			   (CASE WHEN C.BUCKET_SEQ IS NOT NULL
 					 THEN 'Y'
 					 ELSE 'N'
@@ -376,8 +376,8 @@
 			A.REG_DTTM,
 			B.NICKNAME,
 			B.PROFILE_URL,
-			B.USER_ID,
-			CONCAT(B.USER_ID, '@', B.NICKNAME) AS FULL_NAME
+			B.USERNAME,
+			CONCAT(B.USERNAME, '@', B.NICKNAME) AS FULL_NAME
 		FROM TB_STORY_REPLY A
 		LEFT JOIN TB_USER_MNG B
 			   ON A.USER_SEQ = B.USER_SEQ
