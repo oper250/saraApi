@@ -38,8 +38,12 @@ public class CommonController {
 	}
 
 	public Map<String, Object> getResponse(Map<String, Object> rsMap) throws Exception {
-		rsMap.put("rsCode", "0000");
-		rsMap.put("rsMsg", "SUCCESS");
+		if(rsMap != null) {
+			rsMap.put("rsCode", "0000");
+			rsMap.put("rsMsg", "SUCCESS");
+		} else {
+			return new HashMap<String, Object>();
+		}
 
 		return rsMap;
 	}
